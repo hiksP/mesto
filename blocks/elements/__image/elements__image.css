@@ -3,3 +3,17 @@
   height: 282px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 881px) {
+  .elements__image {
+    width: 245px;
+    height: 245px;
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .elements__image {
+    width: 282px;
+    height: 282px;
+  }
+}
