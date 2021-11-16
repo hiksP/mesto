@@ -1,8 +1,17 @@
 .profile__add-button {
   width: 150px;
   height: 52px;
+  padding: 0;
+  border-style: none;
+  border: 1px solid white;
   background-color: black;
   background-image: url('../../../images/profileAddButton.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  transition: opacity .3s linear;
+}
+
+.profile__add-button:hover {
+  opacity: .6;
+  cursor: pointer;
 }

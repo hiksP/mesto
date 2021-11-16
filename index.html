@@ -69,20 +69,23 @@
       </ul>
     </section>
     <div class="popup popup_opened">
-      <form class="popup__container">
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <ul class="popup__list">
-          <li class="popup__list-element">
-            <label for="popup__name"></label>
-            <input type="text" id="popup__name" name="user_name">
-          </li>
-          <li class="popup__list-element">
-            <label for="popup__status"></label>
-            <input type="text" id="popup__status" name="user_name">
-          </li>
-        </ul>
-        <button class="popup__submit" type="submit">Сохранить</button>
-      </form>
+      <div class="popup__container">
+        <button class="popup__close"></button>
+        <form class="popup__form">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <ul class="popup__list">
+            <li class="popup__list-element">
+              <label for="popup__name"></label>
+              <input type="text" id="popup__name" name="user_name">
+            </li>
+            <li class="popup__list-element">
+              <label for="popup__status"></label>
+              <input type="text" id="popup__status" name="user_name">
+            </li>
+          </ul>
+          <button class="popup__submit" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
     </main>
     <footer class="footer">
