@@ -10,6 +10,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   transition: opacity .3s linear;
+  transform: translate(100%, -100%);
   top: -8px;
   right: -8px;
 }
