@@ -6,7 +6,7 @@
   width: calc(100% - 72px);
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 600px) {
   .popup__list {
     max-width: 238px;
     width: calc(100% - 44px);

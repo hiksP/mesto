@@ -4,7 +4,7 @@
   font-weight: 500;
   line-height: 48px;
   color: white;
-  margin: 0 18px 16px 0;
+  margin: 0;
   padding: 0;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -22,6 +22,5 @@
   .profile__name {
     font-size: 27px;
     line-height: 33px;
-    margin: 0 10px 14px 0;
   }
 }
