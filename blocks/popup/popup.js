@@ -26,4 +26,4 @@ function formSubmitHandler (evt) {
   hidepop();
 }
 
-formElement.addEventListener('submit', formSubmitHandler); 
+formElement.addEventListener('submit', formSubmitHandler);
