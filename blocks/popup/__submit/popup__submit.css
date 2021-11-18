@@ -5,7 +5,8 @@
   line-height: 22px;
   color: white;
   margin: 0 auto;
-  width: 358px;
+  max-width: 358px;
+  width: calc(100% - 72px);
   height: 50px;
   padding: 0;
   border-style: none;
@@ -17,4 +18,14 @@
 .popup__submit:hover {
   opacity: .8;
   cursor: pointer;
+}
+
+@media screen and (max-width: 426px) {
+  .popup__submit {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 238px;
+    width: calc(100% - 44px);
+    height: 46px;
+  }
 }
