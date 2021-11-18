@@ -17,7 +17,7 @@
       <img class="profile__avatar" src="./images/profileAvatar.jpg" alt="Аватар профиля">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button"></button>
+        <button class="profile__edit-button" onclick="showpop()"></button>
         <p class="profile__status">Исследователь океана</p>
       </div>
       <button class="profile__add-button"></button>
@@ -68,9 +68,9 @@
         </li>
       </ul>
     </section>
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
-        <button class="popup__close"></button>
+        <button class="popup__close" onclick="hidepop()"></button>
         <form class="popup__form">
           <h3 class="popup__title">Редактировать профиль</h3>
           <ul class="popup__list">
@@ -83,7 +83,7 @@
               <input type="text" id="popup__status" name="user_name">
             </li>
           </ul>
-          <button class="popup__submit" type="submit">Сохранить</button>
+          <button class="popup__submit" type="submit" onclick="formSubmitHandler(evt)">Сохранить</button>
         </form>
       </div>
     </div>
@@ -92,4 +92,5 @@
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
+  <script src="./blocks/popup/popup.js"></script>
 </body>

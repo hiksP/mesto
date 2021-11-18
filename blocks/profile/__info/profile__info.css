@@ -2,7 +2,8 @@
   display: flex;
   margin-right: auto;
   flex-wrap: wrap;
-  max-width: 336px;
+  max-width: calc(100% - 300px);
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 676px) {

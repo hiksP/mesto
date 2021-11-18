@@ -6,6 +6,9 @@
   color: white;
   margin: 0 18px 16px 0;
   padding: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 90%;
 }
 
 @media screen and (max-width: 676px) {
