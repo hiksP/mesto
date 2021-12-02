@@ -53,6 +53,8 @@ function getItem(item) {
   const imageEL = newItem.querySelector('.elements__image');
   headerEl.textContent = item.name;
   imageEL.src = item.link;
+  const deleteButton = newItem.querySelector('.elements__delete-button');
+  deleteButton.addEventListener('click', handleDelete);
   return newItem;
 }
 
@@ -79,6 +81,12 @@ function handleAdd()  {
   const cardItem = getItem({title: placeText, link: placeLink});
   listContainer.prepend(cardItem);
   placeInput.value = '';
+}
+
+function handleDelete(evt) {
+  const targetEl = evt.target;
+  const cardItem = targetEl.closest('.elements__box');
+  cardItem.remove();
 }
 
 openPopupButton.addEventListener('click', showpop);
