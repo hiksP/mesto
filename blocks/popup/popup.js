@@ -34,6 +34,7 @@ function render() {
     });
     ListContainer.append(...html);
 }
+
 function getItem(item) {
   const newItem = templateBox.content.cloneNode(true);
   const headerEl = newItem.querySelector('.elements__title');
@@ -45,7 +46,7 @@ function getItem(item) {
 
 render()
 
-let popup = document.querySelector('.popup');
+let popupEdit = document.querySelector('.popup_edit');
 let openPopupButton = document.querySelector('.profile__edit-button');
 let closePopupButton = document.querySelector('.popup__close');
 let formElement = document.querySelector('.popup__form');
@@ -53,15 +54,17 @@ let nameInput = document.querySelector('[name="user_name"]');
 let statusInput = document.querySelector('[name="user_status"]');
 let nameStart = document.querySelector('.profile__name');
 let statusStart = document.querySelector('.profile__status');
+let placeInput = document.querySelector('[name="place_name"]');
+let linkInput = document.querySelector('[name="place_link"]');
 
 function showpop() {
-  popup.classList.add('popup_opened');
+  popupEdit.classList.add('popup_opened');
   nameInput.value = nameStart.textContent;
   statusInput.value = statusStart.textContent;
 }
 
 function hidepop() {
-  popup.classList.remove('popup_opened');
+  popupEdit.classList.remove('popup_opened');
 }
 
 function formSubmitHandler (evt) {
@@ -73,4 +76,3 @@ function formSubmitHandler (evt) {
 openPopupButton.addEventListener('click', showpop);
 closePopupButton.addEventListener('click', hidepop);
 formElement.addEventListener('submit', formSubmitHandler);
-
