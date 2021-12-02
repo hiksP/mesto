@@ -41,21 +41,23 @@ const listContainer = document.querySelector('.elements__list');
 
 function render() {
   const html = initialCards
-    .map((item) => {
-      return getItem(item);
+    .map((card) => {
+      return getItem(card);
     });
     listContainer.append(...html);
 }
 
-function getItem(item) {
-  const newItem = templateBox.content.cloneNode(true);
-  const headerEl = newItem.querySelector('.elements__title');
-  const imageEL = newItem.querySelector('.elements__image');
-  headerEl.textContent = item.name;
-  imageEL.src = item.link;
-  const deleteButton = newItem.querySelector('.elements__delete-button');
+function getItem(card) {
+  const newCard = templateBox.content.cloneNode(true);
+  const headerEl = newCard.querySelector('.elements__title');
+  const imageEL = newCard.querySelector('.elements__image');
+  headerEl.textContent = card.name;
+  imageEL.src = card.link;
+  const deleteButton = newCard.querySelector('.elements__delete-button');
   deleteButton.addEventListener('click', handleDelete);
-  return newItem;
+  const likeButton = newCard.querySelector('.elements__like-button');
+  likeButton.addEventListener('click', like);
+  return newCard;
 }
 
 function showpop() {
@@ -87,6 +89,11 @@ function handleDelete(evt) {
   const targetEl = evt.target;
   const cardItem = targetEl.closest('.elements__box');
   cardItem.remove();
+}
+
+function like(evt) {
+  const targetEl = evt.target;
+  targetEl.classList.toggle('elements__like-button_active');
 }
 
 openPopupButton.addEventListener('click', showpop);
