@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./blocks/popup/popup.js" defer></script>
   <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
@@ -23,7 +24,7 @@
     </section>
     <section class="elements">
       <ul class="elements__list">
-        <li class="elements__box">
+        <!-- <li class="elements__box">
           <img class="elements__image" src="./images/elementWall.jpg" alt="Стена с текстом">
           <div class="elements__name-box">
             <h2 class="elements__title">Стена</h2>
@@ -64,7 +65,7 @@
             <h2 class="elements__title">Жвачка...</h2>
             <button class="elements__like-button" type="button"></button>
           </div>
-        </li>
+        </li> -->
       </ul>
     </section>
     <div class="popup">
@@ -89,6 +90,14 @@
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <script src="./blocks/popup/popup.js"></script>
+  <template class="template">
+    <li class="elements__box">
+      <img class="elements__image" src="" alt="Каритнка в карточке">
+      <div class="elements__name-box">
+        <h2 class="elements__title"></h2>
+        <button class="elements__like-button" type="button"></button>
+      </div>
+    </li>
+  </template>
 </body>
 </html>
