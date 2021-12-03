@@ -76,7 +76,7 @@ function formSubmitHandler (evt) {
   evt.preventDefault();
   nameStart.textContent = nameInput.value;
   statusStart.textContent = statusInput.value;
-  hidepop();
+  hidepop(editPopup);
 }
 
 function handleAdd()  {
@@ -98,10 +98,17 @@ function like(evt) {
   targetEl.classList.toggle('elements__like-button_active');
 }
 
-openPopupButton.addEventListener('click', () => showpop(editPopup) );
+openPopupButton.addEventListener('click', () => {
+  nameInput.value = nameStart.textContent;
+  statusInput.value = statusStart.textContent;
+  showpop(editPopup);
+  });
 closePopupButton.addEventListener('click', () => hidepop(editPopup) );
 formElement.addEventListener('submit', formSubmitHandler);
-addButton.addEventListener('click', () => showpop(addPopup) );
+addButton.addEventListener('click', () => {
+  showpop(addPopup);
+  placeInput.value = "Название";
+  linkInput.value = "Сылка на картинку"});
 closePopupAddButton.addEventListener('click', () => hidepop(addPopup) );
 
 render()
