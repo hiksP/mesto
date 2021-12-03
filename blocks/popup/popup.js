@@ -25,9 +25,13 @@ const initialCards = [
   }
 ];
 
-let popupEdit = document.querySelector('.popup_edit');
+let popup = document.querySelector('.popup');
+let editPopup = document.querySelector('.popup_edit')
+let addPopup = document.querySelector('.popup_add')
 let openPopupButton = document.querySelector('.profile__edit-button');
-let closePopupButton = document.querySelector('.popup__close');
+let closePopupButton = document.querySelector('.popup__close_edit');
+let addButton = document.querySelector('.profile__add-button');
+let closePopupAddButton = document.querySelector('.popup__close_add');
 let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('[name="user_name"]');
 let statusInput = document.querySelector('[name="user_status"]');
@@ -35,9 +39,9 @@ let nameStart = document.querySelector('.profile__name');
 let statusStart = document.querySelector('.profile__status');
 let placeInput = document.querySelector('[name="place_name"]');
 let linkInput = document.querySelector('[name="place_link"]');
-const addButton = document.querySelector('.profile__add-button');
 const templateBox = document.querySelector('.template');
 const listContainer = document.querySelector('.elements__list');
+
 
 function render() {
   const html = initialCards
@@ -60,14 +64,12 @@ function getItem(card) {
   return newCard;
 }
 
-function showpop() {
-  popupEdit.classList.add('popup_opened');
-  nameInput.value = nameStart.textContent;
-  statusInput.value = statusStart.textContent;
+function showpop(popup) {
+  popup.classList.add('popup_opened')
 }
 
-function hidepop() {
-  popupEdit.classList.remove('popup_opened');
+function hidepop(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 function formSubmitHandler (evt) {
@@ -96,8 +98,10 @@ function like(evt) {
   targetEl.classList.toggle('elements__like-button_active');
 }
 
-openPopupButton.addEventListener('click', showpop);
-closePopupButton.addEventListener('click', hidepop);
+openPopupButton.addEventListener('click', () => showpop(editPopup) );
+closePopupButton.addEventListener('click', () => hidepop(editPopup) );
 formElement.addEventListener('submit', formSubmitHandler);
+addButton.addEventListener('click', () => showpop(addPopup) );
+closePopupAddButton.addEventListener('click', () => hidepop(addPopup) );
 
 render()
