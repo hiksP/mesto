@@ -97,6 +97,7 @@ function handleAdd(evt)  {
   const placeLink = linkInput.value;
   const cardItem = getItem({name: placeText, link: placeLink});
   listContainer.prepend(cardItem);
+  placeInput.value = '';
   hidepop(addPopup);
 }
 
