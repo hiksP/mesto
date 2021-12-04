@@ -42,6 +42,10 @@ let placeInput = document.querySelector('[name="place_name"]');
 let linkInput = document.querySelector('[name="place_link"]');
 const templateBox = document.querySelector('.template');
 const listContainer = document.querySelector('.elements__list');
+let popupImage = document.querySelector('.popup_image');
+let popupImageClose = document.querySelector('.popup__close_image')
+let popupPlacePicture = document.querySelector('.popup__place-picture');
+let popupPlaceName = document.querySelector('.popup__place-name');
 
 
 function render() {
@@ -62,6 +66,13 @@ function getItem(card) {
   deleteButton.addEventListener('click', handleDelete);
   const likeButton = newCard.querySelector('.elements__like-button');
   likeButton.addEventListener('click', like);
+  let imageAdress = imageEL.src
+  let imageTitle = newCard.querySelector('.elements__title').textContent;
+  imageEL.addEventListener('click', () => {
+    popupPlacePicture.src = imageAdress;
+    popupPlaceName.textContent = imageTitle;
+    showpop(popupImage)
+    });
   return newCard;
 }
 
@@ -86,7 +97,6 @@ function handleAdd(evt)  {
   const placeLink = linkInput.value;
   const cardItem = getItem({name: placeText, link: placeLink});
   listContainer.prepend(cardItem);
-  placeInput.value = '';
   hidepop(addPopup);
 }
 
@@ -111,5 +121,6 @@ formElement.addEventListener('submit', formSubmitHandler);
 addButton.addEventListener('click', () => showpop(addPopup) );
 closePopupAddButton.addEventListener('click', () => hidepop(addPopup) );
 formAdd.addEventListener('submit', handleAdd);
+popupImageClose.addEventListener('click',() => hidepop(popupImage) );
 
 render()
