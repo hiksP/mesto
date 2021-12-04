@@ -92,16 +92,25 @@
           <h3 class="popup__title">Новое место</h3>
           <ul class="popup__list">
             <li class="popup__list-element">
-              <input type="text" class="popup__data-box" name="place_name">
+              <input type="text" class="popup__data-box" name="place_name" placeholder="Название">
             </li>
             <li class="popup__list-element">
-              <input type="text" class="popup__data-box" name="place_link">
+              <input type="text" class="popup__data-box" name="place_link" placeholder="Сылка на картинку">
             </li>
           </ul>
           <button class="popup__submit" type="submit">Создать</button>
         </form>
       </div>
-    </div>  
+    </div>
+    <div class="popup popup_image">
+      <figure class="popup__place-box">
+        <button class="popup__close popup__close_image" type="button"></button>
+        <img class="popup__place-picture" src="./images/elementWall.jpg" alt="">
+        <figcaption class="popup__place-text">
+          <p class="popup__place-name">Стена с текстом</p>
+        </figcaption>
+      </figure>
+    </div> 
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>

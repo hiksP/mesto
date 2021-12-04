@@ -32,3 +32,7 @@
 @import url(../blocks/popup/__list-element/popup__list-element.css);
 @import url(../blocks/popup/__data-box/popup__data-box.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__place-box/popup__place-box.css);
+@import url(../blocks/popup/__place-picture/popup__place-picture.css);
+@import url(../blocks/popup/__place-text/popup__place-text.css);
+@import url(../blocks/popup/__place-name/popup__place-name.css);
