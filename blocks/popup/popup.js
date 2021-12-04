@@ -32,7 +32,8 @@ let openPopupButton = document.querySelector('.profile__edit-button');
 let closePopupButton = document.querySelector('.popup__close_edit');
 let addButton = document.querySelector('.profile__add-button');
 let closePopupAddButton = document.querySelector('.popup__close_add');
-let formElement = document.querySelector('.popup__form');
+let formElement = document.querySelector('.popup__form_edit');
+let formAdd = document.querySelector('.popup__form_add')
 let nameInput = document.querySelector('[name="user_name"]');
 let statusInput = document.querySelector('[name="user_status"]');
 let nameStart = document.querySelector('.profile__name');
@@ -79,12 +80,14 @@ function formSubmitHandler (evt) {
   hidepop(editPopup);
 }
 
-function handleAdd()  {
+function handleAdd(evt)  {
+  evt.preventDefault();
   const placeText = placeInput.value;
   const placeLink = linkInput.value;
-  const cardItem = getItem({title: placeText, link: placeLink});
+  const cardItem = getItem({name: placeText, link: placeLink});
   listContainer.prepend(cardItem);
   placeInput.value = '';
+  hidepop(addPopup);
 }
 
 function handleDelete(evt) {
@@ -105,10 +108,8 @@ openPopupButton.addEventListener('click', () => {
   });
 closePopupButton.addEventListener('click', () => hidepop(editPopup) );
 formElement.addEventListener('submit', formSubmitHandler);
-addButton.addEventListener('click', () => {
-  showpop(addPopup);
-  placeInput.value = "Название";
-  linkInput.value = "Сылка на картинку"});
+addButton.addEventListener('click', () => showpop(addPopup) );
 closePopupAddButton.addEventListener('click', () => hidepop(addPopup) );
+formAdd.addEventListener('submit', handleAdd);
 
 render()
