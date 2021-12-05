@@ -92,13 +92,13 @@ function formSubmitHandler (evt) {
 }
 
 function handleAdd(evt)  {
-  formAdd.reset();
   evt.preventDefault();
   const placeText = placeInput.value;
   const placeLink = linkInput.value;
   const cardItem = getItem({name: placeText, link: placeLink});
   listContainer.prepend(cardItem);
   hidepop(addPopup);
+  formAdd.reset();
 }
 
 function handleDelete(evt) {
