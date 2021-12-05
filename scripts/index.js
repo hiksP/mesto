@@ -34,12 +34,12 @@ const addButton = document.querySelector('.profile__add-button');
 const closePopupAddButton = document.querySelector('.popup__close_add');
 const formElement = document.querySelector('.popup__form_edit');
 const formAdd = document.querySelector('.popup__form_add')
-const nameInput = document.querySelector('[name="user_name"]');
-const statusInput = document.querySelector('[name="user_status"]');
+const nameInput = document.querySelector('[name="user-name"]');
+const statusInput = document.querySelector('[name="user-status"]');
 const nameStart = document.querySelector('.profile__name');
 const statusStart = document.querySelector('.profile__status');
-const placeInput = document.querySelector('[name="place_name"]');
-const linkInput = document.querySelector('[name="place_link"]');
+const placeInput = document.querySelector('[name="place-name"]');
+const linkInput = document.querySelector('[name="place-link"]');
 const templateBox = document.querySelector('.template');
 const listContainer = document.querySelector('.elements__list');
 const popupImage = document.querySelector('.popup_image');
