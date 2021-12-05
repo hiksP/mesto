@@ -43,6 +43,7 @@ function getItem(card) {
   const imageTitle = newCard.querySelector('.elements__title').textContent;
   imageElement.addEventListener('click', () => {
     popupPlacePicture.src = imageAdress;
+    popupPlacePicture.alt = card.name;
     popupPlaceName.textContent = imageTitle;
     showPopup(popupImage)
     });
