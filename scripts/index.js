@@ -25,27 +25,27 @@ const initialCards = [
   }
 ];
 
-let popup = document.querySelector('.popup');
-let editPopup = document.querySelector('.popup_edit')
-let addPopup = document.querySelector('.popup_add')
-let openPopupButton = document.querySelector('.profile__edit-button');
-let closePopupButton = document.querySelector('.popup__close_edit');
-let addButton = document.querySelector('.profile__add-button');
-let closePopupAddButton = document.querySelector('.popup__close_add');
-let formElement = document.querySelector('.popup__form_edit');
-let formAdd = document.querySelector('.popup__form_add')
-let nameInput = document.querySelector('[name="user_name"]');
-let statusInput = document.querySelector('[name="user_status"]');
-let nameStart = document.querySelector('.profile__name');
-let statusStart = document.querySelector('.profile__status');
-let placeInput = document.querySelector('[name="place_name"]');
-let linkInput = document.querySelector('[name="place_link"]');
+
+const editPopup = document.querySelector('.popup_edit')
+const addPopup = document.querySelector('.popup_add')
+const openPopupButton = document.querySelector('.profile__edit-button');
+const closePopupButton = document.querySelector('.popup__close_edit');
+const addButton = document.querySelector('.profile__add-button');
+const closePopupAddButton = document.querySelector('.popup__close_add');
+const formElement = document.querySelector('.popup__form_edit');
+const formAdd = document.querySelector('.popup__form_add')
+const nameInput = document.querySelector('[name="user_name"]');
+const statusInput = document.querySelector('[name="user_status"]');
+const nameStart = document.querySelector('.profile__name');
+const statusStart = document.querySelector('.profile__status');
+const placeInput = document.querySelector('[name="place_name"]');
+const linkInput = document.querySelector('[name="place_link"]');
 const templateBox = document.querySelector('.template');
 const listContainer = document.querySelector('.elements__list');
-let popupImage = document.querySelector('.popup_image');
-let popupImageClose = document.querySelector('.popup__close_image')
-let popupPlacePicture = document.querySelector('.popup__place-picture');
-let popupPlaceName = document.querySelector('.popup__place-name');
+const popupImage = document.querySelector('.popup_image');
+const popupImageClose = document.querySelector('.popup__close_image')
+const popupPlacePicture = document.querySelector('.popup__place-picture');
+const popupPlaceName = document.querySelector('.popup__place-name');
 
 
 function render() {
@@ -66,8 +66,8 @@ function getItem(card) {
   deleteButton.addEventListener('click', handleDelete);
   const likeButton = newCard.querySelector('.elements__like-button');
   likeButton.addEventListener('click', like);
-  let imageAdress = imageEL.src
-  let imageTitle = newCard.querySelector('.elements__title').textContent;
+  const imageAdress = imageEL.src
+  const imageTitle = newCard.querySelector('.elements__title').textContent;
   imageEL.addEventListener('click', () => {
     popupPlacePicture.src = imageAdress;
     popupPlaceName.textContent = imageTitle;
@@ -92,6 +92,7 @@ function formSubmitHandler (evt) {
 }
 
 function handleAdd(evt)  {
+  formAdd.reset();
   evt.preventDefault();
   const placeText = placeInput.value;
   const placeLink = linkInput.value;
