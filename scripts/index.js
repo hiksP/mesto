@@ -38,7 +38,8 @@ function getItem(card) {
   deleteButton.addEventListener('click', handleDelete);
   const likeButton = newCard.querySelector('.elements__like-button');
   likeButton.addEventListener('click', handleLikeClick);
-  const imageAdress = imageElement.src
+  const imageAdress = imageElement.src;
+  imageElement.alt = card.name;
   const imageTitle = newCard.querySelector('.elements__title').textContent;
   imageElement.addEventListener('click', () => {
     popupPlacePicture.src = imageAdress;
