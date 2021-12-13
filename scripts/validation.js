@@ -12,6 +12,10 @@ const hideError = (form, input, errorClass, inputErrorClass) => {
   input.classList.remove(inputErrorClass);
 }
 
+const hasInvalidInput = (inputs) => {
+ return inputs.some( (element) => element.validity.valid);
+}
+
 const checkIfInputValid = (form, input, {inputErrorClass, errorClass }) => {
   if (!input.validity.valid) {
     showError(form, input, input.validationMessage, inputErrorClass, errorClass)
