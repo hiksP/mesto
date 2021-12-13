@@ -16,6 +16,16 @@ const hasInvalidInput = (inputs) => {
  return inputs.some( (element) => element.validity.valid);
 }
 
+const toggleButtonError = (inputs, submitButtonSelector, inactiveButtonClass) => {
+  if (hasInvalidInput(inputs)) {
+    submitButtonSelector.classList.add(inactiveButtonClass);
+    submitButtonSelector.disabled = true;
+  } else {
+    submitButtonSelector.classList.remove(inactiveButtonClass);
+    submitButtonSelector.disabled = false;
+  }
+}
+
 const checkIfInputValid = (form, input, {inputErrorClass, errorClass }) => {
   if (!input.validity.valid) {
     showError(form, input, input.validationMessage, inputErrorClass, errorClass)
@@ -30,6 +40,7 @@ const setInputListeners = (form, {inputSelector, ...rest} ) => {
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       checkIfInputValid(form, input, rest);
+      toggleButtonError();
     });
   });
   
