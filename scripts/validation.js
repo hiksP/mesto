@@ -52,6 +52,6 @@ enableValidation({
   inputSelector: '.popup__data-box',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__error_visible',
+  inputErrorClass: 'popup__input-error_visible',
   errorClass: 'popup__data-box_error'
 });

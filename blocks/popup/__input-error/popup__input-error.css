@@ -1,5 +1,5 @@
 .popup__input-error {
-  display: block;
+  display: none;
   color:#FF0000;
   font-size: 12px;
   font-style: normal;
