@@ -1,3 +1,4 @@
+const popupOverlay = document.querySelector('.popup__overlay');
 const editPopup = document.querySelector('.popup_edit')
 const addPopup = document.querySelector('.popup_add')
 const openPopupProfileButton = document.querySelector('.profile__edit-button');
@@ -100,8 +101,8 @@ openPopupProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
   const submitButton = formEditProfile.querySelector('.popup__submit');
-  submitButton.classList.remove('popup__submit_inactive');
-  submitButton.disabled = false;
+  submitButton.classList.add('popup__submit_inactive');
+  submitButton.disabled = true;
   showPopup(editPopup);
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
@@ -115,5 +116,6 @@ addNewCardButton.addEventListener('click', () => {
 closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
 formAdd.addEventListener('submit', handleAddCard);
 popupImageCloseButton.addEventListener('click',() => hidePopup(popupImage) );
+popupOverlay.addEventListener('click', () => hidePopup(popupOverlay.parentElement) );
 
 render()

@@ -8,6 +8,7 @@
   background-color: white;
   justify-content: center;
   align-self: center;
+  z-index: 5;
 }
 
 @media screen and (max-width: 600px) {
