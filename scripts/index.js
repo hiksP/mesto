@@ -50,8 +50,18 @@ function getItem(card) {
   return newCard;
 }
 
+function resetPopup(popup) {
+  const inputError = popup.querySelectorAll('.popup__input-error');
+  inputError.forEach((error) => {
+    const input = error.previousElementSibling;
+    input.classList.remove('popup__data-box_error');
+    error.textContent = '';
+  });
+}
+
 function showPopup(popup) {
-  popup.classList.add('popup_opened')
+  resetPopup(popup);
+  popup.classList.add('popup_opened');
 }
 
 function hidePopup(popup) {
@@ -89,11 +99,18 @@ function handleLikeClick(evt) {
 openPopupProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
+  const submitButton = formEditProfile.querySelector('.popup__submit');
+  submitButton.classList.remove('popup__submit_inactive');
   showPopup(editPopup);
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
 formEditProfile.addEventListener('submit', handleProfileSubmit );
-addNewCardButton.addEventListener('click', () => showPopup(addPopup) );
+addNewCardButton.addEventListener('click', () => {
+  formAdd.reset();
+  const submitButton = formAdd.querySelector('.popup__submit');
+  submitButton.classList.add('popup__submit_inactive');
+  showPopup(addPopup);
+});
 closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
 formAdd.addEventListener('submit', handleAddCard);
 popupImageCloseButton.addEventListener('click',() => hidePopup(popupImage) );
