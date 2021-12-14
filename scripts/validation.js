@@ -13,16 +13,16 @@ const hideError = (form, input, errorClass, inputErrorClass) => {
 }
 
 const hasInvalidInput = (inputs) => {
- return inputs.some( (element) => element.validity.valid);
+ return Array.from(inputs).some( (element) => !element.validity.valid);
 }
 
-const toggleButtonError = (inputs, submitButtonSelector, inactiveButtonClass) => {
+const toggleButtonError = (inputs, button, inactiveButtonClass) => {
   if (hasInvalidInput(inputs)) {
-    submitButtonSelector.classList.add(inactiveButtonClass);
-    submitButtonSelector.disabled = true;
+    button.classList.add(inactiveButtonClass);
+    button.disabled = true;
   } else {
-    submitButtonSelector.classList.remove(inactiveButtonClass);
-    submitButtonSelector.disabled = false;
+    button.classList.remove(inactiveButtonClass);
+    button.disabled = false;
   }
 }
 
@@ -34,13 +34,14 @@ const checkIfInputValid = (form, input, {inputErrorClass, errorClass }) => {
   }
 }
 
-const setInputListeners = (form, {inputSelector, ...rest} ) => {
+const setInputListeners = (form, {inputSelector, submitButtonSelector, inactiveButtonClass, ...rest} ) => {
   const inputs = form.querySelectorAll(inputSelector);
+  const sumbitButton = form.querySelector(submitButtonSelector);
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       checkIfInputValid(form, input, rest);
-      toggleButtonError();
+      toggleButtonError(inputs, sumbitButton, inactiveButtonClass);
     });
   });
   
@@ -62,7 +63,7 @@ enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__data-box',
   submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__button_inactive',
+  inactiveButtonClass: 'popup__submit_inactive',
   inputErrorClass: 'popup__input-error_visible',
   errorClass: 'popup__data-box_error'
 });
