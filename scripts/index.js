@@ -101,6 +101,7 @@ openPopupProfileButton.addEventListener('click', () => {
   statusInput.value = profileStatus.textContent;
   const submitButton = formEditProfile.querySelector('.popup__submit');
   submitButton.classList.remove('popup__submit_inactive');
+  submitButton.disabled = false;
   showPopup(editPopup);
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
