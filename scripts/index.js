@@ -1,4 +1,4 @@
-const popupOverlay = document.querySelectorAll('.popup');
+const popupOverlay = document.querySelectorAll('.popup__overlay');
 const editPopup = document.querySelector('.popup_edit')
 const addPopup = document.querySelector('.popup_add')
 const openPopupProfileButton = document.querySelector('.profile__edit-button');
@@ -117,7 +117,7 @@ closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
 formAdd.addEventListener('submit', handleAddCard);
 popupImageCloseButton.addEventListener('click',() => hidePopup(popupImage) );
 popupOverlay.forEach((overlay) => {
-  overlay.addEventListener('click', () => hidePopup(overlay) );
+  overlay.addEventListener('click', () => hidePopup(overlay.parentElement) );
 });
 
 render()
