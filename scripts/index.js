@@ -110,8 +110,6 @@ openPopupProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
   const submitButton = formEditProfile.querySelector('.popup__submit');
-  submitButton.classList.add('popup__submit_inactive');
-  submitButton.disabled = true;
   showPopup(editPopup);
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup,(editPopup) );
@@ -120,6 +118,7 @@ addNewCardButton.addEventListener('click', () => {
   formAdd.reset();
   const submitButton = formAdd.querySelector('.popup__submit');
   submitButton.classList.add('popup__submit_inactive');
+  submitButton.disabled = true;
   showPopup(addPopup);
 });
 closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );

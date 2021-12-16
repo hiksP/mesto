@@ -15,7 +15,7 @@
   transition: opacity .3s linear;
 }
 
-.popup__submit:hover {
+.popup__submit:hover:not([disabled]) {
   opacity: .8;
   cursor: pointer;
 }
