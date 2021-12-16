@@ -4,3 +4,8 @@
   border: solid 2px black;
   opacity: .15;
 }
+
+.popup__submit_inactive:hover {
+  transition: none;
+  cursor: none;
+}
