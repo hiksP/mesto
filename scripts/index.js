@@ -19,6 +19,7 @@ const popupImage = document.querySelector('.popup_image');
 const popupImageCloseButton = document.querySelector('.popup__close_image')
 const popupPlacePicture = document.querySelector('.popup__place-picture');
 const popupPlaceName = document.querySelector('.popup__place-name');
+const inputError = document.querySelectorAll('.popup__input-error');
 
 
 function render() {
@@ -41,7 +42,7 @@ function getItem(card) {
   likeButton.addEventListener('click', handleLikeClick);
   const imageAdress = imageElement.src;
   imageElement.alt = card.name;
-  const imageTitle = newCard.querySelector('.elements__title').textContent;
+  const imageTitle = cardTitle.textContent;
   imageElement.addEventListener('click', () => {
     popupPlacePicture.src = imageAdress;
     popupPlacePicture.alt = card.name;
@@ -59,7 +60,6 @@ function closePopupByEsc (evt) {
 }
 
 function resetPopup(popup) {
-  const inputError = popup.querySelectorAll('.popup__input-error');
   inputError.forEach((error) => {
     const input = error.previousElementSibling;
     input.classList.remove('popup__data-box_error');
@@ -79,14 +79,12 @@ function hidePopup(popup) {
 }
 
 function handleProfileSubmit (evt) {
-  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileStatus.textContent = statusInput.value;
   hidePopup(editPopup);
 }
 
 function handleAddCard(evt)  {
-  evt.preventDefault();
   const placeText = placeInput.value;
   const placeLink = linkInput.value;
   const cardItem = getItem({name: placeText, link: placeLink});
@@ -112,7 +110,7 @@ openPopupProfileButton.addEventListener('click', () => {
   const submitButton = formEditProfile.querySelector('.popup__submit');
   showPopup(editPopup);
   });
-closePopupProfileButton.addEventListener('click', () => hidePopup,(editPopup) );
+closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
 formEditProfile.addEventListener('submit', handleProfileSubmit );
 addNewCardButton.addEventListener('click', () => {
   formAdd.reset();
