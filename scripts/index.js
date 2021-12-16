@@ -102,6 +102,9 @@ function handleAddCard(evt)  {
   const cardItem = getItem({name: placeText, link: placeLink});
   listContainer.prepend(cardItem);
   hidePopup(addPopup);
+  formAdd.reset();
+  submitAddButton.classList.add('popup__submit_inactive');
+  submitAddButton.disabled = true;
 }
 
 function handleDelete(evt) {
@@ -126,10 +129,7 @@ openPopupProfileButton.addEventListener('click', () => {
 closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
 formEditProfile.addEventListener('submit', handleProfileSubmit );
 addNewCardButton.addEventListener('click', () => {
-  formAdd.reset();
   resetPopup(addPopup);
-  submitAddButton.classList.add('popup__submit_inactive');
-  submitAddButton.disabled = true;
   showPopup(addPopup);
 });
 closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
