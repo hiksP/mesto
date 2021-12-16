@@ -37,7 +37,7 @@ const checkIfInputValid = (form, input, {inputErrorClass, errorClass }) => {
 const setInputListeners = (form, {inputSelector, submitButtonSelector, inactiveButtonClass, ...rest} ) => {
   const inputs = form.querySelectorAll(inputSelector);
   const sumbitButton = form.querySelector(submitButtonSelector);
-
+  toggleButtonError(inputs, sumbitButton, inactiveButtonClass);
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       checkIfInputValid(form, input, rest);
