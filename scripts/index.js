@@ -93,8 +93,6 @@ function hidePopup(popup) {
 function handleProfileSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileStatus.textContent = statusInput.value;
-  submitEditButton.disabled = false;
-  submitEditButton.classList.remove('popup__submit_inactive');
   hidePopup(editPopup);
 }
 
@@ -124,6 +122,8 @@ openPopupProfileButton.addEventListener('click', () => {
   resetPopup(editPopup);
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
+  submitEditButton.disabled = false;
+  submitEditButton.classList.remove('popup__submit_inactive');
   showPopup(editPopup);
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
