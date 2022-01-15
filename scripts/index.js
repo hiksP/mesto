@@ -29,7 +29,7 @@ function render() {
   const cardsList = initialCards
     .map((card) => {
       const cardBox = new newCard('.template', card.name, card.link);
-     return cardBox.getView();
+      return cardBox.getView();
     });
     listContainer.append(...cardsList);
 }
