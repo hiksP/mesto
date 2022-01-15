@@ -47,12 +47,12 @@ function render() {
 //   const imageAdress = imageElement.src;
 //   imageElement.alt = card.name;
 //   const imageTitle = cardTitle.textContent;
-//   imageElement.addEventListener('click', () => {
-//     popupPlacePicture.src = imageAdress;
-//     popupPlacePicture.alt = card.name;
-//     popupPlaceName.textContent = imageTitle;
-//     showPopup(popupImage)
-//     });
+  // imageElement.addEventListener('click', () => {
+  //   popupPlacePicture.src = imageAdress;
+  //   popupPlacePicture.alt = card.name;
+  //   popupPlaceName.textContent = imageTitle;
+  //   showPopup(popupImage)
+  //   });
 //   return newCard;
 // }
 
