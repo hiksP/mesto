@@ -23,7 +23,7 @@ const inputs = Array.from(document.querySelectorAll('.popup__data-box'));
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
 const submitAddButton = formAdd.querySelector('.popup__submit');
 
-
+import Card from './card.js'
 
 function render() {
   const cardsList = initialCards
@@ -33,27 +33,28 @@ function render() {
     listContainer.append(...cardsList);
 }
 
-function getItem(card) {
-  const newCard = templateBox.content.cloneNode(true);
-  const cardTitle = newCard.querySelector('.elements__title');
-  const imageElement = newCard.querySelector('.elements__image');
-  cardTitle.textContent = card.name;
-  imageElement.src = card.link;
-  const deleteButton = newCard.querySelector('.elements__delete-button');
-  deleteButton.addEventListener('click', handleDelete);
-  const likeButton = newCard.querySelector('.elements__like-button');
-  likeButton.addEventListener('click', handleLikeClick);
-  const imageAdress = imageElement.src;
-  imageElement.alt = card.name;
-  const imageTitle = cardTitle.textContent;
-  imageElement.addEventListener('click', () => {
-    popupPlacePicture.src = imageAdress;
-    popupPlacePicture.alt = card.name;
-    popupPlaceName.textContent = imageTitle;
-    showPopup(popupImage)
-    });
-  return newCard;
-}
+// function getItem(card) {
+//   const newCard = templateBox.content.cloneNode(true);
+//   const cardTitle = newCard.querySelector('.elements__title');
+//   const imageElement = newCard.querySelector('.elements__image');
+//   cardTitle.textContent = card.name;
+//   imageElement.src = card.link;
+//   const deleteButton = newCard.querySelector('.elements__delete-button');
+//   deleteButton.addEventListener('click', handleDelete);
+//   const likeButton = newCard.querySelector('.elements__like-button');
+//   likeButton.addEventListener('click', handleLikeClick);
+//   const imageAdress = imageElement.src;
+//   imageElement.alt = card.name;
+//   const imageTitle = cardTitle.textContent;
+//   imageElement.addEventListener('click', () => {
+//     popupPlacePicture.src = imageAdress;
+//     popupPlacePicture.alt = card.name;
+//     popupPlaceName.textContent = imageTitle;
+//     showPopup(popupImage)
+//     });
+//   return newCard;
+// }
+
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
