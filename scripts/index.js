@@ -23,12 +23,13 @@ const inputs = Array.from(document.querySelectorAll('.popup__data-box'));
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
 const submitAddButton = formAdd.querySelector('.popup__submit');
 
-import Card from './card.js'
+import newCard from './newCard.js'
 
 function render() {
   const cardsList = initialCards
     .map((card) => {
-      return getItem(card);
+      const cardBox = new newCard('.template', card.name, card.link);
+     return cardBox.getView();
     });
     listContainer.append(...cardsList);
 }

@@ -1,5 +1,5 @@
-class Card {
-    constructor(selector, image, title) {
+class newCard {
+    constructor(selector, title, image) {
         this._selector = selector;
         this._title = title;
         this._image = image;
@@ -14,10 +14,10 @@ class Card {
 
     getView() {
         this._element = this._getTemplate();
-        this._element.querySelector('.elements__image').src = this._image;
         this._element.querySelector('.elements__title').textContent = this._title;
+        this._element.querySelector('.elements__image').src = this._image;
         return this._element;
     }
 }
 
-export default Card;
+export default newCard;
