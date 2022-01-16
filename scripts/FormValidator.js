@@ -27,7 +27,7 @@ class FormValidator {
 
     _hasInvalidInput = () => {
         return this._inputs.some( (element) => {
-        return  !element.validity.valid
+        return  !element.validity.valid;
         });   
     }
 
@@ -66,11 +66,6 @@ class FormValidator {
 
         this._setInputListeners();
     }
-
-    resetValidation = () => {
-        this._toggleButtonError;
-        this._inputs.forEach( (input) => this._hideError(input) );
-      }
 
 }
 
