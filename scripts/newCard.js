@@ -1,4 +1,4 @@
-class newCard {
+class card {
     constructor(selector, title, image) {
         this._selector = selector;
         this._title = title;
@@ -24,6 +24,11 @@ class newCard {
         document.querySelector('.popup_image').classList.add('popup_opened');
     }
 
+    _addCard = (title, link) => {
+        const place = new card('.elements__box', title, image);
+        this._element.append(place.getView() )
+    }
+
     getView() {
         this._element = this._getTemplate();
         this._element.querySelector('.elements__title').textContent = this._title;
@@ -35,4 +40,4 @@ class newCard {
     }
 }
 
-export default newCard;
+export default card;

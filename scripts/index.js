@@ -23,12 +23,13 @@ const inputs = Array.from(document.querySelectorAll('.popup__data-box'));
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
 const submitAddButton = formAdd.querySelector('.popup__submit');
 
-import newCard from './newCard.js'
+import FormValidator from './FormValidator.js';
+import card from './newCard.js'
 
 function render() {
   const cardsList = initialCards
-    .map((card) => {
-      const cardBox = new newCard('.template', card.name, card.link);
+    .map((place) => {
+      const cardBox = new card('.template', place.name, place.link);
       return cardBox.getView();
     });
     listContainer.append(...cardsList);
@@ -56,6 +57,14 @@ function render() {
 //   return newCard;
 // }
 
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__data-box',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input-error_visible',
+  errorClass: 'popup__data-box_error'
+});
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
