@@ -62,8 +62,8 @@ const dataOfValidation = ({
   inputSelector: '.popup__data-box',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input-error_visible',
-  errorClass: 'popup__data-box_error'
+  inputErrorClass: 'popup__data-box_error',
+  errorClass: 'popup__input-error_visible'
 });
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd);
