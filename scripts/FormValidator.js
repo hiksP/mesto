@@ -7,30 +7,32 @@ class FormValidator {
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
         this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector) );
-        this._button = this._formSelector.querySelector(this._popup__submit);
+        this._button = this._formSelector.querySelector(this._submitButtonSelector);
 
     }
 
     _showError = (input, errorMessageText) => {
-        const errorMessage = this._querySelector(`#${input.name}-error`);
+        const errorMessage = this._formSelector.querySelector(`#${input.name}-error`);
         errorMessage.textContent = errorMessageText;
         errorMessage.classList.add(this._errorClass);
         input.classList.add(this._inputErrorClass);
     }
 
     _hideError = (input) => {
-        const errorMessage = this._querySelector(`#${input.name}-error`);
+        const errorMessage = this._formSelector.querySelector(`#${input.name}-error`);
         errorMessage.textContent = ' ';
         errorMessage.classList.remove(this._errorClass);
-        input.classList.remove(inputErrorClass);
+        input.classList.remove(this._inputErrorClass);
     }
 
     _hasInvalidInput = () => {
-        return this._inputs.some( (element) => !element.validity.valid);
+        return this._inputs.some( (element) => {
+        return  !element.validity.valid
+        });   
     }
 
     _toggleButtonError = () => {
-      if (this.__inputSelector._hasInvalidInput(inputs) ) {
+      if (this._hasInvalidInput() ) {
         this._button.classList.add(this._inactiveButtonClass);
         this._button.disable = true;
       } else {
@@ -49,7 +51,7 @@ class FormValidator {
 
     _setInputListeners = () => {
         this._toggleButtonError();
-        inputs.forEach( (input) => {
+        this._inputs.forEach( (input) => {
             input.addEventListener('input', () => {
                 this._checkIfInputValid(input);
                 this._toggleButtonError();
@@ -64,6 +66,11 @@ class FormValidator {
 
         this._setInputListeners();
     }
+
+    resetValidation = () => {
+        this._toggleButtonError;
+        this._inputs.forEach( (input) => this._hideError(input) );
+      }
 
 }
 

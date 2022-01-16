@@ -68,6 +68,9 @@ const dataOfValidation = ({
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
+addCardValidation.enableValidtaion();
+editProfileValidation.enableValidtaion();
+
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
