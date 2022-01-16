@@ -57,7 +57,7 @@ function render() {
 //   return newCard;
 // }
 
-const enableValidation = ({
+const dataOfValidation = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__data-box',
   submitButtonSelector: '.popup__submit',
@@ -65,6 +65,9 @@ const enableValidation = ({
   inputErrorClass: 'popup__input-error_visible',
   errorClass: 'popup__data-box_error'
 });
+
+const addCardValidation = new FormValidator(dataOfValidation, formAdd);
+const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
