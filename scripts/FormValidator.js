@@ -6,25 +6,29 @@ class FormValidator {
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
+        this._inputs = Array.from(this._formSelector._querySelectorAll(this._inputSelector) );
+
     }
 
-
-    _getTemplate() {
-        return document.querySelector(this._selector)
+    _showError = (input, errorMessageText) => {
+        const errorMessage = this._querySelector(`#${input.name}-error`);
+        errorMessage.textContent = errorMessageText;
+        errorMessage.classList.add(this._errorClass);
+        input.classList.add(this._inputErrorClass);
     }
 
-    _handlesubmit = (evt) => {
-        evt.preventDefault();
-        const input = this._element.querySelector('.popup__data-box');
-        this._onSubmit(input.value);
-        input.value = '';
+    _hideError = (input) => {
+        const errorMessage = this._querySelector(`#${input.name}-error`);
+        errorMessage.textContent = ' ';
+        errorMessage.classList.remove(this._errorClass);
+        input.classList.remove(inputErrorClass);
     }
 
-    getView() {
-        this._element = this._getTemplate();
-        this._element.addEventListener('submit', this._handlesubmit() );
+    _hasInvalidInput = (inputs) => {
+        return this._inputs.some( (element) => !element.validity.valid);
     }
 
+    
 }
 
 export default FormValidator

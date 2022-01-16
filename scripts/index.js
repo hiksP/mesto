@@ -57,7 +57,7 @@ function render() {
 //   return newCard;
 // }
 
-enableValidation({
+const enableValidation = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__data-box',
   submitButtonSelector: '.popup__submit',
