@@ -66,7 +66,10 @@ const dataOfValidation = ({
   errorClass: 'popup__input-error_visible'
 });
 
-const addCardValidation = new FormValidator(dataOfValidation, formAdd);
+const addCardValidation = new FormValidator(dataOfValidation, formAdd, () => {
+  const createdCard = new card('.elements-box', );
+  createdCard.addCard;
+});
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
@@ -113,16 +116,16 @@ function handleProfileSubmit (evt) {
   hidePopup(editPopup);
 }
 
-function handleAddCard(evt)  {
-  const placeText = placeInput.value;
-  const placeLink = linkInput.value;
-  const cardItem = getItem({name: placeText, link: placeLink});
-  listContainer.prepend(cardItem);
-  hidePopup(addPopup);
-  formAdd.reset();
-  submitAddButton.classList.add('popup__submit_inactive');
-  submitAddButton.disabled = true;
-}
+// function handleAddCard(evt)  {
+//   const placeText = placeInput.value;
+//   const placeLink = linkInput.value;
+//   const cardItem = getItem({name: placeText, link: placeLink});
+//   listContainer.prepend(cardItem);
+//   hidePopup(addPopup);
+//   formAdd.reset();
+//   submitAddButton.classList.add('popup__submit_inactive');
+//   submitAddButton.disabled = true;
+// }
 
 function handleDelete(evt) {
   const targetEl = evt.target;
@@ -150,7 +153,7 @@ addNewCardButton.addEventListener('click', () => {
   showPopup(addPopup);
 });
 closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
-formAdd.addEventListener('submit', handleAddCard);
+// formAdd.addEventListener('submit', handleAddCard);
 popupImageCloseButton.addEventListener('click',() => hidePopup(popupImage) );
 
 render()

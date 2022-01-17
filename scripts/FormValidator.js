@@ -1,11 +1,12 @@
 class FormValidator {
-    constructor(data, formSelector) {
+    constructor(data, formSelector, submitCard) {
         this._formSelector = formSelector;
         this._inputSelector = data.inputSelector;
         this._submitButtonSelector = data.submitButtonSelector;
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
+        this._submitCard = submitCard;
         this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector) );
         this._button = this._formSelector.querySelector(this._submitButtonSelector);
 
@@ -47,8 +48,19 @@ class FormValidator {
         }
     }
 
+    _handleSubmit = () => {
+        const nameInput = this._formSelector.querySelector('[name="place-name"]');
+        const imageInput = this._formSelector.querySelector('[name="place-link"]');
+        this._submitCard(nameInput.value, imageInput.value);
+        nameInput.value = '';
+        imageInput.value = '';
+    }
+
     _setInputListeners = () => {
         this._toggleButtonError();
+        if (this._formSelector.classList.contains('popup__form_add') ) {
+            this._formSelector.addEventListener('sumbit', this._handleSubmit() );
+        }
         this._inputs.forEach( (input) => {
             input.addEventListener('input', () => {
                 this._checkIfInputValid(input);

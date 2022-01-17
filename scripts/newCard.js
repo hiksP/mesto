@@ -24,18 +24,22 @@ class card {
         document.querySelector('.popup_image').classList.add('popup_opened');
     }
 
-    _addCard = (title, link) => {
+    addCard = (title, image) => {
         const place = new card('.elements__box', title, image);
-        this._element.append(place.getView() )
+        this._element.append(place.getView() );
+    }
+
+    _addEventListeners = () => {
+        this._element.querySelector('.elements__image').addEventListener('click', this._handleOpenImagePopup);
+        this._element.querySelector('.elements__delete-button').addEventListener('click', this._handleDeleteCard);
+        this._element.querySelector('.elements__like-button').addEventListener('click', this._handlePressLike);
     }
 
     getView() {
         this._element = this._getTemplate();
         this._element.querySelector('.elements__title').textContent = this._title;
         this._element.querySelector('.elements__image').src = this._image;
-        this._element.querySelector('.elements__image').addEventListener('click', this._handleOpenImagePopup);
-        this._element.querySelector('.elements__delete-button').addEventListener('click', this._handleDeleteCard);
-        this._element.querySelector('.elements__like-button').addEventListener('click', this._handlePressLike);
+        this._addEventListeners();
         return this._element;
     }
 }
