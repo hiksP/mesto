@@ -29,7 +29,7 @@ import card from './newCard.js'
 function render() {
   const cardsList = initialCards
     .map((place) => {
-      const cardBox = new card('.template', place.name, place.link);
+      const cardBox = new card('.template', place.name, place.link, handleOpenImage);
       return cardBox.getView();
     });
     listContainer.append(...cardsList);
@@ -67,13 +67,20 @@ const dataOfValidation = ({
 });
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd, (placeInput, imageInput) => {
-  const createdCard = new card('.template', placeInput.value, imageInput.value);
-  listContainer.prepend(createdCard.addCard(placeInput.value, imageInput.value) );
+  const createdCard = new card('.template', placeInput.value, imageInput.value, handleOpenImage);
+  listContainer.prepend(createdCard.addCard(placeInput.value, imageInput.value, handleOpenImage) );
   hidePopup();
 })
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
+
+function handleOpenImage(title, image) {
+  showPopup(popupImage);
+  document.querySelector('.popup__place-picture').src = image;
+  document.querySelector('.popup__place-name').textContent = title;
+
+}
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
@@ -128,16 +135,16 @@ function handleProfileSubmit (evt) {
 //   submitAddButton.disabled = true;
 // }
 
-function handleDelete(evt) {
-  const targetEl = evt.target;
-  const cardItem = targetEl.closest('.elements__box');
-  cardItem.remove();
-}
+// function handleDelete(evt) {
+//   const targetEl = evt.target;
+//   const cardItem = targetEl.closest('.elements__box');
+//   cardItem.remove();
+// }
 
-function handleLikeClick(evt) {
-  const targetEl = evt.target;
-  targetEl.classList.toggle('elements__like-button_active');
-}
+// function handleLikeClick(evt) {
+//   const targetEl = evt.target;
+//   targetEl.classList.toggle('elements__like-button_active');
+// }
 
 openPopupProfileButton.addEventListener('click', () => {
   resetPopup(editPopup);

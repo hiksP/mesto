@@ -54,7 +54,6 @@ class FormValidator {
         this._submitCard(nameInput, imageInput);
         nameInput.value = '';
         imageInput.value = '';
-        console.log(this._submitButtonSelector);
         this._button.disabled = true;
         this._button.classList.add('popup__submit_inactive');
     }
