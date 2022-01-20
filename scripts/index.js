@@ -66,14 +66,14 @@ const dataOfValidation = ({
   errorClass: 'popup__input-error_visible'
 });
 
-const addCardValidation = new FormValidator(dataOfValidation, formAdd, () => {
-  const createdCard = new card('.elements-box', );
-  createdCard.addCard;
-});
+const addCardValidation = new FormValidator(dataOfValidation, formAdd, (placeInput, imageInput) => {
+  const createdCard = new card('.template', placeInput.value, imageInput.value);
+  createdCard.addCard(placeInput.value, imageInput.value);
+  listContainer.prepend(createdCard);
+})
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
-
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {

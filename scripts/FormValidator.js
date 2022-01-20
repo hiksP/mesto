@@ -49,18 +49,16 @@ class FormValidator {
     }
 
     _handleSubmit = () => {
+        console.log("click");
         const nameInput = this._formSelector.querySelector('[name="place-name"]');
         const imageInput = this._formSelector.querySelector('[name="place-link"]');
-        this._submitCard(nameInput.value, imageInput.value);
+        this._submitCard(nameInput, imageInput);
         nameInput.value = '';
         imageInput.value = '';
     }
 
     _setInputListeners = () => {
         this._toggleButtonError();
-        if (this._formSelector.classList.contains('popup__form_add') ) {
-            this._formSelector.addEventListener('sumbit', this._handleSubmit() );
-        }
         this._inputs.forEach( (input) => {
             input.addEventListener('input', () => {
                 this._checkIfInputValid(input);
@@ -72,6 +70,9 @@ class FormValidator {
     enableValidtaion = () => {
         this._formSelector.addEventListener('submit', (evt) => {
             evt.preventDefault();
+            if (this._formSelector.classList.contains('popup__form_add') ) {
+                this._formSelector.addEventListener('submit', this._handleSubmit() );
+            }
         });
 
         this._setInputListeners();

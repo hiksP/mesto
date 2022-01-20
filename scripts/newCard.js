@@ -25,8 +25,9 @@ class card {
     }
 
     addCard = (title, image) => {
-        const place = new card('.elements__box', title, image);
-        this._element.append(place.getView() );
+        const place = new card('.template', title, image);
+        console.log(place.getView());
+        return place.getView();
     }
 
     _addEventListeners = () => {
