@@ -21,6 +21,10 @@ class card {
     }
 
     _handleOpenImagePopup = () => {
+        const picture = document.querySelector('.popup__place-picture');
+        picture.src = this._image;
+        const pictureName = document.querySelector('.popup__place-name');
+        pictureName.textContent = this._title;
         document.querySelector('.popup_image').classList.add('popup_opened');
     }
 
