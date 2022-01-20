@@ -9,7 +9,6 @@ class FormValidator {
         this._submitCard = submitCard;
         this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector) );
         this._button = this._formSelector.querySelector(this._submitButtonSelector);
-
     }
 
     _showError = (input, errorMessageText) => {
@@ -77,6 +76,13 @@ class FormValidator {
         });
 
         this._setInputListeners();
+    }
+
+    clearValidation = () => {
+        this._toggleButtonError();
+        this._inputs.forEach((input) => {
+            this._hideError(input);
+        });
     }
 
 }
