@@ -69,6 +69,7 @@ const dataOfValidation = ({
 const addCardValidation = new FormValidator(dataOfValidation, formAdd, (placeInput, imageInput) => {
   const createdCard = new card('.template', placeInput.value, imageInput.value);
   listContainer.prepend(createdCard.addCard(placeInput.value, imageInput.value) );
+  hidePopup();
 })
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
@@ -76,15 +77,15 @@ editProfileValidation.enableValidtaion();
 
 function closePopupByEsc (evt) {
   if(evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened')
-    hidePopup(popupOpened);
+    // const popupOpened = document.querySelector('.popup_opened')
+    hidePopup();
   }
 }
 
 function closePopupOnOverlay(evt) {
   if(evt.path[0].classList.contains('popup__overlay') ) {
-    const popupOpened = document.querySelector('.popup_opened')
-    hidePopup(popupOpened);
+    // const popupOpened = document.querySelector('.popup_opened')
+    hidePopup();
   }
 }
 
@@ -103,7 +104,8 @@ function showPopup(popup) {
   document.addEventListener('keydown', closePopupByEsc);
 }
 
-function hidePopup(popup) {
+function hidePopup() {
+  const popup = document.querySelector('.popup_opened')
   popup.classList.remove('popup_opened');
   document.removeEventListener('click', closePopupOnOverlay);
   document.removeEventListener('keydown', closePopupByEsc);
@@ -112,7 +114,7 @@ function hidePopup(popup) {
 function handleProfileSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileStatus.textContent = statusInput.value;
-  hidePopup(editPopup);
+  hidePopup();
 }
 
 // function handleAddCard(evt)  {
@@ -145,14 +147,14 @@ openPopupProfileButton.addEventListener('click', () => {
   submitEditButton.classList.remove('popup__submit_inactive');
   showPopup(editPopup);
   });
-closePopupProfileButton.addEventListener('click', () => hidePopup(editPopup) );
+closePopupProfileButton.addEventListener('click', () => hidePopup() );
 formEditProfile.addEventListener('submit', handleProfileSubmit );
 addNewCardButton.addEventListener('click', () => {
   resetPopup(addPopup);
   showPopup(addPopup);
 });
-closePopupAddButton.addEventListener('click', () => hidePopup(addPopup) );
+closePopupAddButton.addEventListener('click', () => hidePopup() );
 // formAdd.addEventListener('submit', handleAddCard);
-popupImageCloseButton.addEventListener('click',() => hidePopup(popupImage) );
+popupImageCloseButton.addEventListener('click',() => hidePopup() );
 
 render()

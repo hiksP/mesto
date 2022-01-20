@@ -26,7 +26,6 @@ class card {
 
     addCard = (title, image) => {
         const place = new card('.template', title, image);
-        console.log(place.getView());
         return place.getView();
     }
 
