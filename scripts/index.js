@@ -68,8 +68,7 @@ const dataOfValidation = ({
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd, (placeInput, imageInput) => {
   const createdCard = new card('.template', placeInput.value, imageInput.value);
-  createdCard.addCard(placeInput.value, imageInput.value);
-  listContainer.prepend(createdCard);
+  listContainer.prepend(createdCard.addCard(placeInput.value, imageInput.value) );
 })
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();

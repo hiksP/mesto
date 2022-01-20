@@ -49,7 +49,6 @@ class FormValidator {
     }
 
     _handleSubmit = () => {
-        console.log("click");
         const nameInput = this._formSelector.querySelector('[name="place-name"]');
         const imageInput = this._formSelector.querySelector('[name="place-link"]');
         this._submitCard(nameInput, imageInput);
