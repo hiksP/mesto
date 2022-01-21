@@ -1,15 +1,13 @@
 class FormValidator {
-    constructor(data, formSelector, submitCard) {
+    constructor(data, formSelector) {
         this._formSelector = formSelector;
         this._inputSelector = data.inputSelector;
         this._submitButtonSelector = data.submitButtonSelector;
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
-        this._submitCard = submitCard;
         this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector) );
         this._button = this._formSelector.querySelector(this._submitButtonSelector);
-        console.log(this._button);
     }
 
     _showError = (input, errorMessageText) => {
@@ -48,14 +46,6 @@ class FormValidator {
         }
     }
 
-    _handleSubmit = () => {
-        const nameInput = this._formSelector.querySelector('[name="place-name"]');
-        const imageInput = this._formSelector.querySelector('[name="place-link"]');
-        this._submitCard(nameInput, imageInput);
-        nameInput.value = '';
-        imageInput.value = '';
-    }
-
     _setInputListeners = () => {
         this._toggleButtonError();
         this._inputs.forEach( (input) => {
@@ -70,9 +60,6 @@ class FormValidator {
     enableValidtaion = () => {
         this._formSelector.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            if (this._formSelector.classList.contains('popup__form_add') ) {
-                this._formSelector.addEventListener('submit', this._handleSubmit() );
-            }
         });
 
         this._setInputListeners();

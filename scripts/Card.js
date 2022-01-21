@@ -1,4 +1,4 @@
-class card {
+class Card {
     constructor(selector, title, image, openPopup) {
         this._selector = selector;
         this._title = title;
@@ -15,14 +15,14 @@ class card {
 
     _handleDeleteCard = () => {
         this._element.remove();
+        this._element = null;
     }
 
     _handlePressLike = () => {
         this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
     }
 
-    addCard = (title, image) => {
-        const place = new card('.template', title, image, this._openPopup);
+    addCard = (place) => {
         return place.getView();
     }
 
@@ -43,4 +43,4 @@ class card {
     }
 }
 
-export default card;
+export default Card;

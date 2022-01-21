@@ -18,18 +18,16 @@ const popupImage = document.querySelector('.popup_image');
 const popupImageCloseButton = document.querySelector('.popup__close_image')
 const popupPlacePicture = document.querySelector('.popup__place-picture');
 const popupPlaceName = document.querySelector('.popup__place-name');
-const inputError = Array.from(document.querySelectorAll('.popup__input-error'));
-const inputs = Array.from(document.querySelectorAll('.popup__data-box'));
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
-const submitAddButton = formAdd.querySelector('.popup__submit');
+const submitAddButton = formAdd.querySelector('.popup__submit'); 
 
 import FormValidator from './FormValidator.js';
-import card from './Card.js'
+import Card from './Card.js'
 
 function render() {
   const cardsList = initialCards
     .map((place) => {
-      const cardBox = new card('.template', place.name, place.link, handleOpenImage);
+      const cardBox = new Card('.template', place.name, place.link, handleOpenImage);
       return cardBox.getView();
     });
     listContainer.append(...cardsList);
@@ -44,11 +42,7 @@ const dataOfValidation = ({
   errorClass: 'popup__input-error_visible'
 });
 
-const addCardValidation = new FormValidator(dataOfValidation, formAdd, (placeInput, imageInput) => {
-  const createdCard = new card('.template', placeInput.value, imageInput.value, handleOpenImage);
-  listContainer.prepend(createdCard.addCard(placeInput.value, imageInput.value, handleOpenImage) );
-  hidePopup();
-})
+const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
@@ -67,18 +61,15 @@ function closePopupByEsc (evt) {
 }
 
 function closePopupOnOverlay(evt) {
-  if(evt.path[0].classList.contains('popup__overlay') ) {
+  if(evt.target.classList.contains('popup__overlay') ) {
     hidePopup();
   }
 }
 
-function resetPopup(popup) {
-  inputError.forEach((error) => {
-    error.textContent = '';
-  });
-  inputs.forEach((errorLine) => {
-    errorLine.classList.remove('popup__data-box_error')
-  });
+function handleAddCard(placeInput, imageInput) {
+  const createdCard = new Card('.template', placeInput.value, imageInput.value, handleOpenImage);
+  listContainer.prepend(createdCard.addCard(createdCard) );
+  hidePopup();
 }
 
 function showPopup(popup) {
@@ -114,6 +105,9 @@ addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();
   showPopup(addPopup);
 });
+submitAddButton.addEventListener('click', () => {
+  handleAddCard(placeInput, linkInput);
+})
 closePopupAddButton.addEventListener('click', () => hidePopup() );
 popupImageCloseButton.addEventListener('click',() => hidePopup() );
 
