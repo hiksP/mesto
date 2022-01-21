@@ -101,13 +101,12 @@ function handleProfileSubmit (evt) {
 }
 
 openPopupProfileButton.addEventListener('click', () => {
-  resetPopup(editPopup);
+  editProfileValidation.clearValidation();
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
   submitEditButton.disabled = false;
   submitEditButton.classList.remove('popup__submit_inactive');
   showPopup(editPopup);
-  editProfileValidation.clearValidation();
   });
 closePopupProfileButton.addEventListener('click', () => hidePopup() );
 formEditProfile.addEventListener('submit', handleProfileSubmit );

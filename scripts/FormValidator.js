@@ -9,6 +9,7 @@ class FormValidator {
         this._submitCard = submitCard;
         this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector) );
         this._button = this._formSelector.querySelector(this._submitButtonSelector);
+        console.log(this._button);
     }
 
     _showError = (input, errorMessageText) => {
@@ -32,10 +33,10 @@ class FormValidator {
     _toggleButtonError = () => {
       if (this._hasInvalidInput() ) {
         this._button.classList.add(this._inactiveButtonClass);
-        this._button.disable = true;
+        this._button.disabled = true;
       } else {
         this._button.classList.remove(this._inactiveButtonClass);
-        this._button.disable = false;
+        this._button.disabled = false;
       }
     }
 
