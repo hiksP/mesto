@@ -65,6 +65,7 @@ class FormValidator {
         });
     }
 
+
     enableValidtaion = () => {
         this._formSelector.addEventListener('submit', (evt) => {
             evt.preventDefault();
@@ -78,6 +79,7 @@ class FormValidator {
 
     clearValidation = () => {
         this._toggleButtonError();
+        this._formSelector.reset();
         this._inputs.forEach((input) => {
             this._hideError(input);
         });
