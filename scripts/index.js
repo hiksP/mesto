@@ -19,7 +19,6 @@ const popupImageCloseButton = document.querySelector('.popup__close_image')
 const popupPlacePicture = document.querySelector('.popup__place-picture');
 const popupPlaceName = document.querySelector('.popup__place-name');
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
-const submitAddButton = formAdd.querySelector('.popup__submit'); 
 
 import FormValidator from './FormValidator.js';
 import Card from './Card.js'
@@ -68,7 +67,7 @@ function closePopupOnOverlay(evt) {
 
 function handleAddCard(placeInput, imageInput) {
   const createdCard = new Card('.template', placeInput.value, imageInput.value, handleOpenImage);
-  listContainer.prepend(createdCard.addCard(createdCard) );
+  listContainer.prepend(createdCard.getView() );
   hidePopup();
 }
 
@@ -105,7 +104,7 @@ addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();
   showPopup(addPopup);
 });
-submitAddButton.addEventListener('click', () => {
+formAdd.addEventListener('submit', () => {
   handleAddCard(placeInput, linkInput);
 })
 closePopupAddButton.addEventListener('click', () => hidePopup() );

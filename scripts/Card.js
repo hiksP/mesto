@@ -15,15 +15,11 @@ class Card {
 
     _handleDeleteCard = () => {
         this._element.remove();
-        this._element = null;
+        this._element = null;   
     }
 
     _handlePressLike = () => {
         this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
-    }
-
-    addCard = (place) => {
-        return place.getView();
     }
 
     _addEventListeners = () => {
