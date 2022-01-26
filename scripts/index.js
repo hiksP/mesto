@@ -35,20 +35,11 @@ const StartingPage = new Section({
   items: cardsList,
   renderer: (item) => {
     const cardElement = cardCreation(item);
-    StartingPage._addItem(cardElement);
+    StartingPage.addItem(cardElement);
   }
 }, '.elements__list');
 
 StartingPage.renderItems();
-
-// function render() {
-//   const cardsList = initialCards
-//     .map((place) => {
-//       const cardBox = new Card('.template', place.name, place.link, handleOpenImage);
-//       return cardBox.getView();
-//     });
-//     listContainer.append(...cardsList);
-// }
 
 const dataOfValidation = ({
   formSelector: '.popup__form',
@@ -127,5 +118,3 @@ formAdd.addEventListener('submit', () => {
 })
 closePopupAddButton.addEventListener('click', () => hidePopup() );
 popupImageCloseButton.addEventListener('click',() => hidePopup() );
-
-// render()
