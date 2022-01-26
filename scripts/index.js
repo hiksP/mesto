@@ -19,18 +19,36 @@ const popupImageCloseButton = document.querySelector('.popup__close_image')
 const popupPlacePicture = document.querySelector('.popup__place-picture');
 const popupPlaceName = document.querySelector('.popup__place-name');
 const submitEditButton = formEditProfile.querySelector('.popup__submit');
+const cardsList = initialCards;
 
+import Section from './Section.js';
 import FormValidator from './FormValidator.js';
 import Card from './Card.js'
 
-function render() {
-  const cardsList = initialCards
-    .map((place) => {
-      const cardBox = new Card('.template', place.name, place.link, handleOpenImage);
-      return cardBox.getView();
-    });
-    listContainer.append(...cardsList);
+function cardCreation(place) {
+  const card = new Card('.template', place.name, place.link, handleOpenImage);
+  const cardBox = card.getView();
+  return cardBox;
 }
+
+const StartingPage = new Section({
+  items: cardsList,
+  renderer: (item) => {
+    const cardElement = cardCreation(item);
+    StartingPage._addItem(cardElement);
+  }
+}, '.elements__list');
+
+StartingPage.renderItems();
+
+// function render() {
+//   const cardsList = initialCards
+//     .map((place) => {
+//       const cardBox = new Card('.template', place.name, place.link, handleOpenImage);
+//       return cardBox.getView();
+//     });
+//     listContainer.append(...cardsList);
+// }
 
 const dataOfValidation = ({
   formSelector: '.popup__form',
@@ -110,4 +128,4 @@ formAdd.addEventListener('submit', () => {
 closePopupAddButton.addEventListener('click', () => hidePopup() );
 popupImageCloseButton.addEventListener('click',() => hidePopup() );
 
-render()
+// render()
