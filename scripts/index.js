@@ -10,7 +10,7 @@ const nameInput = document.querySelector('[name="user-name"]');
 const statusInput = document.querySelector('[name="user-status"]');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
-const placeInput = document.querySelector('[name="place-name"]');
+const placeNameInput = document.querySelector('[name="place-name"]');
 const linkInput = document.querySelector('[name="place-link"]');
 const templateBox = document.querySelector('.template');
 const listContainer = document.querySelector('.elements__list');
@@ -74,7 +74,7 @@ function handleAddCard(placeInput, imageInput) {
   addCardPopup.close();
 }
 
-function handleProfileSubmit (evt) {
+function handleProfileSubmit () {
   profileName.textContent = nameInput.value;
   profileStatus.textContent = statusInput.value;
   EditPopup.close();
@@ -82,7 +82,7 @@ function handleProfileSubmit (evt) {
 
 const EditPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
 EditPopup.setEventListeners();
-const addCardPopup = new PopupWithForm('.popup_add',);
+const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
 
 openPopupProfileButton.addEventListener('click', () => {
@@ -97,6 +97,3 @@ addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();
   addCardPopup.open();
 });
-formAdd.addEventListener('submit', () => {
-  handleAddCard(placeInput, linkInput);
-})
