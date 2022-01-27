@@ -65,8 +65,12 @@ addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
 
 function handleAddCard(placeInput, imageInput) {
-  const createdCard = new Card('.template', placeInput.value, imageInput.value, handleOpenImage);
-  listContainer.prepend(createdCard.getView() );
+  let card = {
+    name: placeInput.value,
+    link: imageInput.value
+  };
+  const createdCard = cardCreation(card);
+  listContainer.prepend(createdCard);
   addCardPopup.close();
 }
 
