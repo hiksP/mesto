@@ -31,11 +31,11 @@ import PopupWithForm from './PopupWithForm.js';
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
 
-function cardCreation(place) {
+function cardCreation({name, link}) {
   const handleOpenImage = () => {
-   bigPicturePopup.open(place);
+   bigPicturePopup.open(name, link);
   }
-  const card = new Card('.template', place.name, place.link, handleOpenImage);
+  const card = new Card('.template', name, link, handleOpenImage);
   const cardBox = card.getView();
   return cardBox;
 }
