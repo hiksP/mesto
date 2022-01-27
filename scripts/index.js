@@ -22,11 +22,18 @@ const submitEditButton = formEditProfile.querySelector('.popup__submit');
 const cardsList = initialCards;
 
 import Popup from './Popup.js';
+import PopupWithImage from "./PopupWithImage.js";
 import Section from './Section.js';
 import FormValidator from './FormValidator.js';
 import Card from './Card.js'
 
+const bigPicturePopup = new PopupWithImage('.popup_image');
+bigPicturePopup.setEventListeners();
+
 function cardCreation(place) {
+  const handleOpenImage = () => {
+   bigPicturePopup.open(place);
+  }
   const card = new Card('.template', place.name, place.link, handleOpenImage);
   const cardBox = card.getView();
   return cardBox;
@@ -55,13 +62,6 @@ const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
-
-function handleOpenImage(title, image) {
-  showPopup(popupImage);
-  document.querySelector('.popup__place-picture').src = image;
-  document.querySelector('.popup__place-name').textContent = title;
-
-}
 
 // function closePopupByEsc (evt) {
 //   if(evt.key === 'Escape') {

@@ -66,8 +66,8 @@ class FormValidator {
     }
 
     clearValidation = () => {
-        this._toggleButtonError();
         this._formSelector.reset();
+        this._toggleButtonError();
         this._inputs.forEach((input) => {
             this._hideError(input);
         });

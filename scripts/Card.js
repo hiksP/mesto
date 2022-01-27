@@ -3,7 +3,7 @@ class Card {
         this._selector = selector;
         this._title = title;
         this._image = image;
-        this._openPopup = openPopup;
+        this._handleCardClick = openPopup;
     }
 
     _getTemplate() {
@@ -24,7 +24,7 @@ class Card {
 
     _addEventListeners = () => {
         this._element.querySelector('.elements__image').addEventListener('click',() => {
-            this._openPopup(this._title, this._image)
+            this._handleCardClick()
         });
         this._element.querySelector('.elements__delete-button').addEventListener('click', this._handleDeleteCard);
         this._element.querySelector('.elements__like-button').addEventListener('click', this._handlePressLike);
