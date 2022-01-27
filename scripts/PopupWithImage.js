@@ -7,8 +7,8 @@ class PopupWithImage extends Popup {
 
     open(place) {
         super.open();
-        this._imageLink = document.querySelector('.popup__place-picture');
-        this._placeName = document.querySelector('.popup__place-name');
+        this._imageLink = this._selector.querySelector('.popup__place-picture');
+        this._placeName = this._selector.querySelector('.popup__place-name');
         this._imageLink.src = place.link;
         this._placeName.textContent = place.name;
     }
