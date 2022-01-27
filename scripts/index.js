@@ -78,7 +78,7 @@ function handleOpenImage(title, image) {
 function handleAddCard(placeInput, imageInput) {
   const createdCard = new Card('.template', placeInput.value, imageInput.value, handleOpenImage);
   listContainer.prepend(createdCard.getView() );
-  hidePopup();
+  addCardPopup.close();
 }
 
 // function showPopup(popup) {
@@ -97,12 +97,13 @@ function handleAddCard(placeInput, imageInput) {
 function handleProfileSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileStatus.textContent = statusInput.value;
-  hidePopup();
+  EditPopup.close();
 }
 
 const EditPopup = new Popup('.popup_edit');
-
 EditPopup.setEventListeners();
+const addCardPopup = new Popup('.popup_add');
+addCardPopup.setEventListeners();
 
 openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
@@ -116,7 +117,7 @@ openPopupProfileButton.addEventListener('click', () => {
 formEditProfile.addEventListener('submit', handleProfileSubmit );
 addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();
-  showPopup(addPopup);
+  addCardPopup.open();
 });
 formAdd.addEventListener('submit', () => {
   handleAddCard(placeInput, linkInput);

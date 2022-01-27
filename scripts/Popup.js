@@ -1,11 +1,12 @@
 class Popup {
     constructor(selector) {
         this._selector = document.querySelector(selector);
+        this._overlay = this._selector.querySelector('.popup__overlay');
+        this._closeButton = this._selector.querySelector('.popup__close');
     }
 
     open() {
         this._selector.classList.add('popup_opened');
-        document.addEventListener('keydown', (evt) => this._handleEscClose(evt))
     }
 
     close() {
@@ -20,8 +21,11 @@ class Popup {
     }
 
     setEventListeners() {
-        const closeButton = this._selector.querySelector('.popup__close');
-        closeButton.addEventListener('click', () => {
+        document.addEventListener('keydown', (evt) => this._handleEscClose(evt))
+        this._overlay.addEventListener('click', () => {
+            this.close();
+        });
+        this._closeButton.addEventListener('click', () => {
             this.close();
         });
     }
