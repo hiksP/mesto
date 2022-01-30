@@ -23,6 +23,7 @@ const cardsList = initialCards;
 
 import Popup from './Popup.js';
 import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from './UserInfo.js';
 import Section from './Section.js';
 import FormValidator from './FormValidator.js';
 import Card from './Card.js'
@@ -63,6 +64,8 @@ const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
+
+const userOnThePage = new UserInfo({profileName, profileStatus});
 
 function handleAddCard(placeInput, imageInput) {
   let card = {
