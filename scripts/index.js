@@ -65,7 +65,9 @@ const editProfileValidation = new FormValidator(dataOfValidation, formEditProfil
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
 
-const userOnThePage = new UserInfo({profileName, profileStatus});
+const userOnThePage = new UserInfo({
+  userName: profileName,
+  info: profileStatus});
 
 function handleAddCard(placeInput, imageInput) {
   let card = {
@@ -78,8 +80,9 @@ function handleAddCard(placeInput, imageInput) {
 }
 
 function handleProfileSubmit () {
-  profileName.textContent = nameInput.value;
-  profileStatus.textContent = statusInput.value;
+  const name = nameInput.value;
+  const status = statusInput.value;
+  userOnThePage.setUserInfo(name, status);
   EditPopup.close();
 }
 

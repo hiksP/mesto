@@ -1,7 +1,7 @@
 class UserInfo {
     constructor({userName, info}) {
-        this._userName = documnet.querySelector(userName);
-        this._info = documnet.querySelector(info);
+        this._userName = userName;
+        this._info = info;
     }
 
     getUserInfo() {
@@ -13,8 +13,8 @@ class UserInfo {
     }
 
     setUserInfo(Name, status) {
-      this._userName = Name;
-      this._info = status;  
+      this._userName.textContent = Name;
+      this._info.textContent = status;  
     }
 }
 
