@@ -31,9 +31,6 @@ import FormValidator from './scripts/components/FormValidator.js';
 import Card from './srcipts/components/Card.js'
 import PopupWithForm from './scripts/components/PopupWithForm.js';
 
-const bigPicturePopup = new PopupWithImage('.popup_image');
-bigPicturePopup.setEventListeners();
-
 function cardCreation({name, link}) {
   const handleOpenImage = () => {
    bigPicturePopup.open(name, link);
@@ -52,6 +49,9 @@ const StartingPage = new Section({
 }, '.elements__list');
 
 StartingPage.renderItems();
+
+const bigPicturePopup = new PopupWithImage('.popup_image');
+bigPicturePopup.setEventListeners();
 
 const dataOfValidation = ({
   formSelector: '.popup__form',

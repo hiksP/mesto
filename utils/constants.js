@@ -1,4 +1,4 @@
-export const initialCards = [
+export const cardsList = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -45,4 +45,3 @@ export const popupImageCloseButton = document.querySelector('.popup__close_image
 export const popupPlacePicture = document.querySelector('.popup__place-picture');
 export const popupPlaceName = document.querySelector('.popup__place-name');
 export const submitEditButton = formEditProfile.querySelector('.popup__submit');
-export const cardsList = initialCards;
