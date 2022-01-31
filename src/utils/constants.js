@@ -35,3 +35,11 @@ export const profileStatus = document.querySelector('.profile__status');
 export const placeNameInput = document.querySelector('[name="place-name"]');
 export const linkInput = document.querySelector('[name="place-link"]');
 export const listContainer = document.querySelector('.elements__list');
+export const dataOfValidation = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__data-box',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__data-box_error',
+  errorClass: 'popup__input-error_visible'
+});

@@ -1,3 +1,13 @@
+import './index.css';
+import deleteButton from '../images/deleteButton.svg';
+import headerLine from '../images/headerLine.jpg';
+import headerLogo from '../images/headerLogo.svg';
+import likeButton from '../images/likeButton.svg';
+import likeButtonActive from '../images/likeButtonActive.svg';
+import popupCloseButton from '../images/popupCloseButton.svg';
+import profileAddButton from '../images/profileAddButton.svg';
+import profileAvatar from '../images/profileAvatar.jpg';
+import profileEditButton from '../images/profileEditButton.svg';
 import {
   cardsList,
   openPopupProfileButton,
@@ -11,6 +21,7 @@ import {
   placeNameInput,
   linkInput,
   listContainer,
+  dataOfValidation
 } from '../utils/constants.js';
 import Popup from '../scripts/components/Popup.js';
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
@@ -41,15 +52,6 @@ StartingPage.renderItems();
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
-
-const dataOfValidation = ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__data-box',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__data-box_error',
-  errorClass: 'popup__input-error_visible'
-});
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
