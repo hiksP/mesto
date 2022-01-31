@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="page">
+  <div class="page__size">
+    <header class="header">
+      <img class="header__logo" src="03b78ada3425e9132ff3.svg" alt="Логотип Mesto">
+    </header>
+    <main>
+    <section class="profile">
+      <img class="profile__avatar" src="717ae23a264d020be959.jpg" alt="Аватар профиля">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button" type="button"></button>
+        <p class="profile__status">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+    <section class="elements">
+      <ul class="elements__list">
+      </ul>
+    </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">© 2022 Mesto Russia</p>
+    </footer>
+  </div>
+  <div class="popup popup_edit">
+    <div class="popup__overlay"></div>
+    <div class="popup__container">
+      <button class="popup__close popup__close_edit" type="button"></button>
+      <form class="popup__form popup__form_edit" novalidate name="data-edit">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <ul class="popup__list">
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" required minlength="2" maxlength="40" name="user-name">
+            <span class="popup__input-error" id="user-name-error"></span>
+          </li>
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" required minlength="2" maxlength="200" name="user-status">
+            <span class="popup__input-error" id="user-status-error"></span>
+          </li>
+        </ul>
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_add">
+    <div class="popup__overlay"></div>
+    <div class="popup__container">
+      <button class="popup__close popup__close_add" type="button"></button>
+      <form class="popup__form popup__form_add" novalidate name="data-add">
+        <h3 class="popup__title">Новое место</h3>
+        <ul class="popup__list">
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" name="place-name" required minlength="2" maxlength="30" placeholder="Название">
+            <span class="popup__input-error" id="place-name-error"></span>
+          </li>
+          <li class="popup__list-element">
+            <input type="url" class="popup__data-box" name="place-link" required placeholder="Сылка на картинку">
+            <span class="popup__input-error" id="place-link-error"></span>
+          </li>
+        </ul>
+        <button class="popup__submit" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_image">
+    <div class="popup__overlay"></div>
+    <figure class="popup__place-box">
+      <button class="popup__close popup__close_image" type="button"></button>
+      <img class="popup__place-picture" src="d1cab3e8d9eeb4e36b00.jpg" alt="открытая картинка">
+      <figcaption class="popup__place-text">
+        <p class="popup__place-name">Стена с текстом</p>
+      </figcaption>
+    </figure>
+  </div>
+  <template class="template">
+    <li class="elements__box">
+      <button class="elements__delete-button" type="button"></button>
+      <img class="elements__image" src="<%=require('./images/elementWall.jpg')$>" alt="Каритнка в карточке">
+      <div class="elements__name-box">
+        <h2 class="elements__title"></h2>
+        <button class="elements__like-button" type="button"></button>
+      </div>
+    </li>
+  </template>
+</body>
+</html>
