@@ -31,11 +31,11 @@ import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 
-function cardCreation({name, link}) {
+function cardCreation({name, link, alt}) {
   const handleOpenImage = () => {
    bigPicturePopup.open(name, link);
   }
-  const card = new Card('.template', name, link, handleOpenImage);
+  const card = new Card('.template', name, link, alt, handleOpenImage);
   const cardBox = card.getView();
   return cardBox;
 }
@@ -65,7 +65,8 @@ const userOnThePage = new UserInfo({
 function handleAddCard(placeInput, imageInput) {
   let card = {
     name: placeInput.value,
-    link: imageInput.value
+    link: imageInput.value,
+    alt: placeInput.value
   };
   const createdCard = cardCreation(card);
   listContainer.prepend(createdCard);

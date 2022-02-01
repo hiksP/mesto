@@ -1,8 +1,9 @@
 class Card {
-    constructor(selector, title, image, openPopup) {
+    constructor(selector, title, image, alt, openPopup) {
         this._selector = selector;
         this._title = title;
         this._image = image;
+        this._alt = alt;
         this._handleCardClick = openPopup;
     }
 
@@ -34,6 +35,7 @@ class Card {
         this._element = this._getTemplate();
         this._element.querySelector('.elements__title').textContent = this._title;
         this._element.querySelector('.elements__image').src = this._image;
+        this._element.querySelector('.elements__image').alt = this._alt;
         this._addEventListeners();
         return this._element;
     }
