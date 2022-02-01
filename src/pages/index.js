@@ -20,7 +20,7 @@ import {
   profileStatus,
   placeNameInput,
   linkInput,
-  listContainer,
+  submitButtonEdit,
   dataOfValidation
 } from '../utils/constants.js';
 import Popup from '../scripts/components/Popup.js';
@@ -40,15 +40,15 @@ function cardCreation({name, link, alt}) {
   return cardBox;
 }
 
-const StartingPage = new Section({
+const startingPage = new Section({
   items: cardsList,
   renderer: (item) => {
     const cardElement = cardCreation(item);
-    StartingPage.addItem(cardElement);
+    startingPage.addItem(cardElement);
   }
 }, '.elements__list');
 
-StartingPage.renderItems();
+startingPage.renderItems();
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
@@ -63,13 +63,13 @@ const userOnThePage = new UserInfo({
   info: profileStatus});
 
 function handleAddCard(placeInput, imageInput) {
-  let card = {
+  const card = {
     name: placeInput.value,
     link: imageInput.value,
     alt: placeInput.value
   };
   const createdCard = cardCreation(card);
-  listContainer.prepend(createdCard);
+  startingPage.addItem(createdCard);
   addCardPopup.close();
 }
 
@@ -77,11 +77,11 @@ function handleProfileSubmit () {
   const name = nameInput.value;
   const status = statusInput.value;
   userOnThePage.setUserInfo(name, status);
-  EditPopup.close();
+  editPopup.close();
 }
 
-const EditPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
-EditPopup.setEventListeners();
+const editPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
+editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
 
@@ -89,8 +89,9 @@ openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
   nameInput.value = profileName.textContent;
   statusInput.value = profileStatus.textContent;
-  editProfileValidation._toggleButtonError();
-  EditPopup.open();
+  submitButtonEdit.disabled = false;
+  submitButtonEdit.classList.remove('popup__submit_inactive');
+  editPopup.open();
   });
 addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();

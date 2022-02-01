@@ -24,6 +24,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",

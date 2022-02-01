@@ -5,15 +5,14 @@ class UserInfo {
     }
 
     getUserInfo() {
-        const user = {
+        return {
             userName: this._userName.textContent,
             userInformation: this._info.textContent
         }
-        return user;
     }
 
-    setUserInfo(Name, status) {
-      this._userName.textContent = Name;
+    setUserInfo(name, status) {
+      this._userName.textContent = name;
       this._info.textContent = status;  
     }
 }
