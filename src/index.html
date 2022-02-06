@@ -79,7 +79,7 @@
       </figcaption>
     </figure>
   </div>
-  <div class="popup popup_confirm popup_opened">
+  <div class="popup popup_confirm">
     <div class="popup__overlay"></div>
     <div class="popup__container popup__container_confirm">
       <button class="popup__close popup__close_image" type="button"></button>
@@ -93,7 +93,10 @@
       <img class="elements__image" src="<%=require('./images/elementWall.jpg')$>" alt="Каритнка в карточке">
       <div class="elements__name-box">
         <h2 class="elements__title"></h2>
-        <button class="elements__like-button" type="button"></button>
+        <div class="elements__like">
+          <button class="elements__like-button" type="button"></button>
+          <p class="elements__likes-count">1</p>
+        </div>
       </div>
     </li>
   </template>
