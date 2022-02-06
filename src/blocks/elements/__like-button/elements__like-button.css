@@ -1,6 +1,7 @@
 .elements__like-button {
   width: 22px;
   height: 19px;
+  margin-bottom: 3px;
   border-style: none;
   background-image: url('../../../images/likeButton.svg');
   background-repeat: no-repeat;
