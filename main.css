@@ -42,4 +42,5 @@
 .popup__place-picture{margin-bottom:10px;max-height:75vh;max-width:75vw;-o-object-fit:cover;object-fit:cover}@media screen and (max-width:426px){.popup__place-picture{height:240px}}
 .popup__place-text{margin:0;padding:0}
 .popup__place-name{color:#fff;font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin:0;padding:0}
+.popup__container_confirm{max-height:181px}
 
