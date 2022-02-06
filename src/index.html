@@ -87,6 +87,20 @@
       <button class="popup__submit" type="submit">Да</button>
     </div>
   </div>
+  <div class="popup popup_change-photo popup_opened">
+    <div class="popup__overlay"></div>
+    <div class="popup__container">
+      <button class="popup__close popup__close_add" type="button"></button>
+      <form class="popup__form popup__form_change" novalidate name="data-change">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <div class="popup__list-element">
+          <input type="url" class="popup__data-box" name="avatar-link" required placeholder="Сылка на аватар">
+          <span class="popup__input-error" id="place-link-error"></span>
+        <div>
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <template class="template">
     <li class="elements__box">
       <button class="elements__delete-button" type="button"></button>
