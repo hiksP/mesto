@@ -18,6 +18,8 @@
 .elements__image{border-top-left-radius:10px;border-top-right-radius:10px;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}.elements__image:hover{cursor:pointer}@media screen and (max-width:881px){.elements__image{height:245px;width:245px}}@media screen and (max-width:776px){.elements__image{height:282px;width:282px}}
 .elements__name-box{align-items:center;display:flex;justify-content:space-between;margin:25px 20px}
 .elements__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:90%;overflow:hidden;padding:0;text-align:center;text-overflow:ellipsis;white-space:nowrap}
+.elements__like{display:flex;flex-direction:column;height:40px;width:25px}
+.elements__likes-count{font-size:13px;font-style:normal;font-weight:400;line-height:16px}
 .elements__like-button{background-color:#fff;background-image:url(0bc60938ca96a5dcae18.svg);background-repeat:no-repeat;background-size:cover;border-style:none;height:19px;transition:opacity .3s linear;width:22px}.elements__like-button:hover{cursor:pointer;opacity:.5}
 .elements__like-button_active{background-image:url(fe17a515669479b1e649.svg)}
 .footer{margin:0 auto;padding:0 0 60px}@media screen and (max-width:426px){.footer{margin:0 19px;padding:0 0 36px}}
