@@ -10,7 +10,9 @@ class Section {
   }
 
   renderItems () {
+    console.log(this._items);
     this._items.forEach((item) => {
+      console.log(item);
         this._renderer(item);
     })
   }

@@ -30,7 +30,7 @@ import Section from '../scripts/components/Section.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import Api from '../scripts/components/Api.js'
+import Api from '../scripts/components/Api.js';
 
 function cardCreation({name, link, alt}) {
   const handleOpenImage = () => {
@@ -46,21 +46,15 @@ const api = new Api({
   token: 'd4eb43b8-f03a-4178-a37e-1c688ba22106'
 });
 
-
 const startingPage = new Section({
-  items: cardsList,
+  items: api.getCards(), 
   renderer: (item) => {
     const cardElement = cardCreation(item);
     startingPage.addItem(cardElement);
   }
 }, '.elements__list');
 
-
-api.getCards()
-  .then(cards => {
-    startingPage.rendererItems(cards);
-  })
-// startingPage.renderItems();
+startingPage.renderItems();
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();

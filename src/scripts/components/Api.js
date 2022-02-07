@@ -5,7 +5,8 @@ class Api {
     }
 
     getCards() {
-        return fetch(`${this._adress}/cards`, {
+        let cardsList = [];
+         fetch(`${this._adress}/cards`, {
             headers: {
                 authorization: this._token
             }
@@ -15,6 +16,12 @@ class Api {
             }
             return Promise.reject(`Ошибка ${response.status}`) 
         })
+            .then((data) => {
+                data.forEach((card) => {
+                    cardsList.push(card);
+                })
+            })
+         return cardsList;
     }
 }
 
