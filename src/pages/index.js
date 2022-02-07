@@ -30,6 +30,7 @@ import Section from '../scripts/components/Section.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Api from '../scripts/components/Api.js'
 
 function cardCreation({name, link, alt}) {
   const handleOpenImage = () => {
@@ -93,7 +94,7 @@ const api = new Api({
 
 api.getCards()
   .then(cards => {
-    cards.rendererItems();
+    startingPage.rendererItems(cards);
   })
 
 openPopupProfileButton.addEventListener('click', () => {
