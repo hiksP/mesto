@@ -85,6 +85,14 @@ editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
 
+
+const api = new Api({
+  adress: 'https://mesto.nomoreparties.co./v1/cohort-35',
+  token: 'd4eb43b8-f03a-4178-a37e-1c688ba22106'
+});
+
+api.getCards();
+
 openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
   nameInput.value = profileName.textContent;
