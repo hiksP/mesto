@@ -10,3 +10,11 @@
     margin: 0 0 26px 0;
   }
 }
+
+.profile__avatar:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/avatar-hover.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
