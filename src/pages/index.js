@@ -41,6 +41,12 @@ function cardCreation({name, link, alt}) {
   return cardBox;
 }
 
+const api = new Api({
+  adress: 'https://mesto.nomoreparties.co/v1/cohort-35',
+  token: 'd4eb43b8-f03a-4178-a37e-1c688ba22106'
+});
+
+
 const startingPage = new Section({
   items: cardsList,
   renderer: (item) => {
@@ -49,6 +55,11 @@ const startingPage = new Section({
   }
 }, '.elements__list');
 
+
+api.getCards()
+  .then(cards => {
+    startingPage.rendererItems(cards);
+  })
 // startingPage.renderItems();
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
@@ -85,17 +96,6 @@ const editPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
 editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
-
-
-const api = new Api({
-  adress: 'https://mesto.nomoreparties.co./v1/cohort-35',
-  token: 'd4eb43b8-f03a-4178-a37e-1c688ba22106'
-});
-
-api.getCards()
-  .then(cards => {
-    startingPage.rendererItems(cards);
-  })
 
 openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
