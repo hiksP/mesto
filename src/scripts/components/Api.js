@@ -4,9 +4,24 @@ class Api {
         this._token = token;
     }
 
+    getUserInfo() {
+        return fetch(`${this._adress}/users/me`, {
+            headers: {
+                authorization: this._token
+            }
+        }) .then(res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка ${res.status}`) 
+        })
+            .then((userObject) => {
+                return userObject;
+            })
+    }
+
     getCards() {
-        let cardsList = [];
-         fetch(`${this._adress}/cards`, {
+        return fetch(`${this._adress}/cards`, {
             headers: {
                 authorization: this._token
             }
@@ -16,12 +31,6 @@ class Api {
             }
             return Promise.reject(`Ошибка ${response.status}`) 
         })
-            .then((data) => {
-                data.forEach((card) => {
-                    cardsList.push(card);
-                })
-            })
-         return cardsList;
     }
 }
 

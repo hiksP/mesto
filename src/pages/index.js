@@ -47,14 +47,20 @@ const api = new Api({
 });
 
 const startingPage = new Section({
-  items: api.getCards(), 
+  // items: api.getCards()
+  // .then(cards => {
+  //   return cards;
+  // }),
   renderer: (item) => {
     const cardElement = cardCreation(item);
     startingPage.addItem(cardElement);
   }
 }, '.elements__list');
 
-startingPage.renderItems();
+api.getCards()
+.then(cards => {
+  startingPage.renderItems(cards);
+})
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
