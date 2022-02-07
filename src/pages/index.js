@@ -48,7 +48,7 @@ const startingPage = new Section({
   }
 }, '.elements__list');
 
-startingPage.renderItems();
+// startingPage.renderItems();
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
@@ -91,7 +91,10 @@ const api = new Api({
   token: 'd4eb43b8-f03a-4178-a37e-1c688ba22106'
 });
 
-api.getCards();
+api.getCards()
+  .then(cards => {
+    cards.rendererItems();
+  })
 
 openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
