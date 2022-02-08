@@ -97,7 +97,10 @@ function handleAddCard(placeInput, imageInput) {
 function handleProfileSubmit () {
   const name = nameInput.value;
   const status = statusInput.value;
-  userOnThePage.setUserInfo(name, status);
+  api.editInfo(name, status)
+  .then((res) => {
+    userOnThePage.setUserInfo(res.name, res.about, profileAvatarPlace.src);
+  })
   editPopup.close();
 }
 

@@ -30,7 +30,8 @@ class Api {
         })
     }
     
-    editInfo(user) {
+    editInfo(name, status) {
+        console.log(name, status)
         return fetch(`${this._adress}/users/me`, {
             method: "PATCH",
             headers: {
@@ -38,8 +39,8 @@ class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: user.name,
-                about: user.status
+                name: name,
+                about: status
             })
         }) .then(res => {
             if(res.ok) {
