@@ -33,10 +33,11 @@ import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Api from '../scripts/components/Api.js';
 
-function cardCreation({name, link, alt}) {
+function cardCreation({name, link}) {
   const handleOpenImage = () => {
    bigPicturePopup.open(name, link);
   }
+  const alt = name;
   const card = new Card('.template', name, link, alt, handleOpenImage);
   const cardBox = card.getView();
   return cardBox;
@@ -84,13 +85,11 @@ addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
 
 function handleAddCard(placeInput, imageInput) {
-  const card = {
-    name: placeInput.value,
-    link: imageInput.value,
-    alt: placeInput.value
-  };
-  const createdCard = cardCreation(card);
-  startingPage.addItem(createdCard);
+  api.uploadCard(placeInput.value, imageInput.value)
+  .then((res) => {
+    const createdCard = cardCreation(res);
+    startingPage.addItem(createdCard);
+  })
   addCardPopup.close();
 }
 
