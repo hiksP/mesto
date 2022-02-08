@@ -47,10 +47,6 @@ const api = new Api({
 });
 
 const startingPage = new Section({
-  // items: api.getCards()
-  // .then(cards => {
-  //   return cards;
-  // }),
   renderer: (item) => {
     const cardElement = cardCreation(item);
     startingPage.addItem(cardElement);
@@ -61,6 +57,18 @@ api.getCards()
 .then(cards => {
   startingPage.renderItems(cards);
 })
+.catch((err) => {
+  console.log(err);
+})
+
+const userOnThePage = new UserInfo({
+  userName: profileName,
+  info: profileStatus});
+
+api.getUserInfo()
+.then((user) => {
+  userOnThePage.setUserInfo(user.name, user.about);
+})
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
 bigPicturePopup.setEventListeners();
@@ -69,10 +77,6 @@ const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
-
-const userOnThePage = new UserInfo({
-  userName: profileName,
-  info: profileStatus});
 
 function handleAddCard(placeInput, imageInput) {
   const card = {

@@ -15,9 +15,6 @@ class Api {
             }
             return Promise.reject(`Ошибка ${res.status}`) 
         })
-            .then((userObject) => {
-                return userObject;
-            })
     }
 
     getCards() {
@@ -30,6 +27,25 @@ class Api {
                 return response.json();
             }
             return Promise.reject(`Ошибка ${response.status}`) 
+        })
+    }
+    
+    editInfo(user) {
+        return fetch(`${this._adress}/users/me`, {
+            method: "PATCH",
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: user.name,
+                about: user.status
+            })
+        }) .then(res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка ${res.status}`)
         })
     }
 }
