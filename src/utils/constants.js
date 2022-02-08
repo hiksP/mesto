@@ -37,6 +37,7 @@ export const formAdd = document.querySelector('.popup__form_add')
 export const nameInput = document.querySelector('[name="user-name"]');
 export const statusInput = document.querySelector('[name="user-status"]');
 export const profileName = document.querySelector('.profile__name');
+export const profileAvatarPlace = document.querySelector('.profile__avatar');
 export const profileStatus = document.querySelector('.profile__status');
 export const placeNameInput = document.querySelector('[name="place-name"]');
 export const linkInput = document.querySelector('[name="place-link"]');

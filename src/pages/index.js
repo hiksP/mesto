@@ -17,6 +17,7 @@ import {
   nameInput,
   statusInput,
   profileName,
+  profileAvatarPlace,
   profileStatus,
   placeNameInput,
   linkInput,
@@ -63,11 +64,15 @@ api.getCards()
 
 const userOnThePage = new UserInfo({
   userName: profileName,
-  info: profileStatus});
+  info: profileStatus,
+  avatar: profileAvatarPlace });
 
 api.getUserInfo()
 .then((user) => {
-  userOnThePage.setUserInfo(user.name, user.about);
+  userOnThePage.setUserInfo(user.name, user.about, user.avatar);
+})
+.catch((err) => {
+  console.log(err);
 })
 
 const bigPicturePopup = new PopupWithImage('.popup_image');
