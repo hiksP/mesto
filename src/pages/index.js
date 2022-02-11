@@ -22,9 +22,11 @@ import {
   placeNameInput,
   linkInput,
   submitButtonEdit,
+  deleteCardButton,
   dataOfValidation
 } from '../utils/constants.js';
 import Popup from '../scripts/components/Popup.js';
+import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js'
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import UserInfo from '../scripts/components/UserInfo.js';
 import Section from '../scripts/components/Section.js';
@@ -33,15 +35,22 @@ import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Api from '../scripts/components/Api.js';
 
-function cardCreation({name, link}) {
+function cardCreation({name, link, likes}) {
   const handleOpenImage = () => {
    bigPicturePopup.open(name, link);
   }
+  const handleOpenDeletePopup = (card) => {
+    deletePopup.open();
+    deletePopup.setSubmitAction(() => {
+      card.handleDeleteCard();
+      deletePopup.close();
+    })
+  }
   const alt = name;
-  const card = new Card('.template', name, link, alt, handleOpenImage);
+  const card = new Card('.template', name, link, alt, likes.length, handleOpenImage, handleOpenDeletePopup);
   const cardBox = card.getView();
   return cardBox;
-}
+} 
 
 const api = new Api({
   adress: 'https://mesto.nomoreparties.co/v1/cohort-35',
@@ -87,8 +96,10 @@ editProfileValidation.enableValidtaion();
 function handleAddCard(placeInput, imageInput) {
   api.uploadCard(placeInput.value, imageInput.value)
   .then((res) => {
-    const createdCard = cardCreation(res);
-    startingPage.addItem(createdCard);
+    startingPage.addItem(cardCreation(res));
+  })
+  .catch((err) => {
+    console.log(err);
   })
   addCardPopup.close();
 }
@@ -100,6 +111,9 @@ function handleProfileSubmit () {
   .then((res) => {
     userOnThePage.setUserInfo(res.name, res.about, profileAvatarPlace.src);
   })
+  .catch((err) => {
+    console.log(err);
+  })
   editPopup.close();
 }
 
@@ -107,6 +121,8 @@ const editPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
 editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
+const deletePopup = new PopupWithConfirm('.popup_confirm');
+deletePopup.setEventListeners();
 
 openPopupProfileButton.addEventListener('click', () => {
   editProfileValidation.clearValidation();
