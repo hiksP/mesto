@@ -22,7 +22,8 @@ import {
   placeNameInput,
   linkInput,
   submitButtonEdit,
-  deleteCardButton,
+  avatarButton,
+  formAvatarChange,
   dataOfValidation
 } from '../utils/constants.js';
 import Popup from '../scripts/components/Popup.js';
@@ -97,8 +98,10 @@ bigPicturePopup.setEventListeners();
 
 const addCardValidation = new FormValidator(dataOfValidation, formAdd);
 const editProfileValidation = new FormValidator(dataOfValidation, formEditProfile);
+const changeAvatarValidation = new FormValidator(dataOfValidation, formAvatarChange);
 addCardValidation.enableValidtaion();
 editProfileValidation.enableValidtaion();
+changeAvatarValidation.enableValidtaion();
 
 function handleAddCard(placeInput, imageInput) {
   api.uploadCard(placeInput.value, imageInput.value)
@@ -128,6 +131,8 @@ const editPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
 editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
+const changeAvatarPopup = new PopupWithForm('.popup_change-photo', () => console.log('s'))
+changeAvatarPopup.setEventListeners();
 const deletePopup = new PopupWithConfirm('.popup_confirm');
 deletePopup.setEventListeners();
 
@@ -143,3 +148,7 @@ addNewCardButton.addEventListener('click', () => {
   addCardValidation.clearValidation();
   addCardPopup.open();
 });
+avatarButton.addEventListener('click', () => {
+  changeAvatarValidation.clearValidation();
+  changeAvatarPopup.open();
+})

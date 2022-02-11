@@ -43,6 +43,8 @@ export const placeNameInput = document.querySelector('[name="place-name"]');
 export const linkInput = document.querySelector('[name="place-link"]');
 export const listContainer = document.querySelector('.elements__list');
 export const submitButtonEdit = formEditProfile.querySelector('.popup__submit');
+export const avatarButton = document.querySelector('.profile__avatar-hover');
+export const formAvatarChange = document.querySelector('.popup__form_change');
 export const dataOfValidation = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__data-box',

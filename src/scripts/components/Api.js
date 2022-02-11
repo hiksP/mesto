@@ -109,6 +109,23 @@ class Api {
             return Promise.reject(`Ошибка ${res.status}`)
         })
     }
+
+    changeAvatar(link) {
+        return fetch(`${this._adress}/users/me/avatar`, {
+            method: "PATCH",
+            headers: {
+                authorization: this._token,
+            },
+            body: JSON.stringify({
+                avatar: link
+            })
+        }) .then(res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка ${res.status}`)
+        })
+    }
 }
 
 export default Api;
