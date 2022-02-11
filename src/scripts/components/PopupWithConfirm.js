@@ -2,7 +2,6 @@ import Popup from "./Popup.js";
 class PopupWithConfirm extends Popup {
     constructor(selector) {
         super(selector);
-        // this._handleConfirm = handleConfirm;
         this._submitButton = this._selector.querySelector('.popup__submit')
     }
 
@@ -10,10 +9,9 @@ class PopupWithConfirm extends Popup {
         super.setEventListeners();
     }
 
-    setSubmitAction(func) {
-        this._handleConfirm = func;
+    setSubmitAction(cardDelete) {
         this._submitButton.addEventListener('click', () => {
-            func();
+            cardDelete();
         })
     }
 

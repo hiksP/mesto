@@ -35,19 +35,26 @@ import Card from '../scripts/components/Card.js'
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Api from '../scripts/components/Api.js';
 
-function cardCreation({name, link, likes}) {
+function cardCreation({name, link, likes, _id, owner}, userId) {
   const handleOpenImage = () => {
    bigPicturePopup.open(name, link);
   }
   const handleOpenDeletePopup = (card) => {
     deletePopup.open();
     deletePopup.setSubmitAction(() => {
-      card.handleDeleteCard();
+      api.deleteCard(_id)
+      .then(res => {
+        card.handleDeleteCard();
+        console.log(res)
+      })
+      .catch(res => {
+        console.log(res);
+      })
       deletePopup.close();
     })
   }
   const alt = name;
-  const card = new Card('.template', name, link, alt, likes.length, handleOpenImage, handleOpenDeletePopup);
+  const card = new Card('.template', name, link, alt, likes.length, owner._id, userId, handleOpenImage, handleOpenDeletePopup);
   const cardBox = card.getView();
   return cardBox;
 } 
@@ -59,7 +66,7 @@ const api = new Api({
 
 const startingPage = new Section({
   renderer: (item) => {
-    const cardElement = cardCreation(item);
+    const cardElement = cardCreation(item, userOnThePage._id);
     startingPage.addItem(cardElement);
   }
 }, '.elements__list');
@@ -79,7 +86,7 @@ const userOnThePage = new UserInfo({
 
 api.getUserInfo()
 .then((user) => {
-  userOnThePage.setUserInfo(user.name, user.about, user.avatar);
+  userOnThePage.setUserInfo(user.name, user.about, user.avatar, user._id);
 })
 .catch((err) => {
   console.log(err);
@@ -96,7 +103,7 @@ editProfileValidation.enableValidtaion();
 function handleAddCard(placeInput, imageInput) {
   api.uploadCard(placeInput.value, imageInput.value)
   .then((res) => {
-    startingPage.addItem(cardCreation(res));
+    startingPage.addItem(cardCreation(res, userOnThePage._id));
   })
   .catch((err) => {
     console.log(err);

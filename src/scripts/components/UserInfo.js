@@ -12,10 +12,11 @@ class UserInfo {
         }
     }
 
-    setUserInfo(name, status, avatar) {
+    setUserInfo(name, status, avatar, id) {
       this._userName.textContent = name;
       this._info.textContent = status;
       this._avatar.src = avatar;
+      this._id = id;
     }
 }
 
