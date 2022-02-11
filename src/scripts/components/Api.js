@@ -82,7 +82,33 @@ class Api {
         })
     }
 
+    addLike(cardId) {
+        return fetch(`${this._adress}/cards/${cardId}/likes`, {
+            method: "PUT",
+            headers: {
+                authorization: this._token,
+            }
+        }) .then(res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка ${res.status}`)
+        })
+    }
 
+    deleteLike(cardId) {
+        return fetch(`${this._adress}/cards/${cardId}/likes`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._token,
+            }
+        }) .then(res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка ${res.status}`)
+        })
+    }
 }
 
 export default Api;
