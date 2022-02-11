@@ -24,6 +24,7 @@ import {
   submitButtonEdit,
   avatarButton,
   formAvatarChange,
+  avatarInput,
   dataOfValidation
 } from '../utils/constants.js';
 import Popup from '../scripts/components/Popup.js';
@@ -127,11 +128,23 @@ function handleProfileSubmit () {
   editPopup.close();
 }
 
+function handleChangeAvatar () {
+  const avatarLink = avatarInput.value;
+  api.changeAvatar(avatarLink)
+  .then((res) => {
+    userOnThePage.setUserInfo(res.name, res.about, avatarLink);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  changeAvatarPopup.close();
+}
+
 const editPopup = new PopupWithForm('.popup_edit', handleProfileSubmit);
 editPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_add',() => handleAddCard(placeNameInput, linkInput));
 addCardPopup.setEventListeners();
-const changeAvatarPopup = new PopupWithForm('.popup_change-photo', () => console.log('s'))
+const changeAvatarPopup = new PopupWithForm('.popup_change-photo', handleChangeAvatar);
 changeAvatarPopup.setEventListeners();
 const deletePopup = new PopupWithConfirm('.popup_confirm');
 deletePopup.setEventListeners();
