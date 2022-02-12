@@ -9,7 +9,6 @@ import profileAddButton from '../images/profileAddButton.svg';
 import profileAvatar from '../images/profileAvatar.jpg';
 import profileEditButton from '../images/profileEditButton.svg';
 import {
-  cardsList,
   openPopupProfileButton,
   addNewCardButton,
   formEditProfile,
