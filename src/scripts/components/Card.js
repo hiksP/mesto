@@ -1,5 +1,5 @@
 class Card {
-    constructor(selector, title, image, alt, likes, ownerId, userId, openPopup, deleteCardPopup) {
+    constructor(selector, title, image, alt, likes, ownerId, userId, openPopup, deleteCardPopup, cardLike) {
         this._selector = selector;
         this._title = title;
         this._image = image;
@@ -9,6 +9,7 @@ class Card {
         this._userId = userId;
         this._handleCardClick = openPopup;
         this._handleDeleteCardPopup = deleteCardPopup;
+        this._cardLike = cardLike;
     }
 
     _getTemplate() {
@@ -24,6 +25,7 @@ class Card {
     }
 
     _handlePressLike = () => {
+        this._cardLike(this._element);
         this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
     }
 
@@ -45,7 +47,7 @@ class Card {
 
     _likeChek = () => {
         this._likes.forEach((item) => {
-            if(item._id === this._ownerId) {
+            if(item._id === this._userId) {
                 this._element.querySelector('.elements__like-button').classList.add('elements__like-button_active')
             }
         });

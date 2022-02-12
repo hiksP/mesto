@@ -54,8 +54,29 @@ function cardCreation({name, link, likes, _id, owner}, userId) {
       deletePopup.close();
     })
   }
+  const likeCard = (card) => {
+    const cardLikeCount = card.querySelector('.elements__likes-count');
+    const likeButton = card.querySelector('.elements__like').querySelector('.elements__like-button');
+    if(likeButton.classList.contains('elements__like-button_active')) {
+      api.deleteLike(_id)
+      .then(res => {
+        cardLikeCount.textContent = res.likes.length;
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } else {
+      api.addLike(_id)
+      .then(res => {
+        cardLikeCount.textContent = res.likes.length;
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+}
   const alt = name;
-  const card = new Card('.template', name, link, alt, likes, owner._id, userId, handleOpenImage, handleOpenDeletePopup);
+  const card = new Card('.template', name, link, alt, likes, owner._id, userId, handleOpenImage, handleOpenDeletePopup, likeCard);
   const cardBox = card.getView();
   return cardBox;
 } 
