@@ -47,7 +47,6 @@ function cardCreation({name, link, likes, _id, owner}, userId) {
       api.deleteCard(_id)
       .then(res => {
         card.handleDeleteCard();
-        console.log(res)
       })
       .catch(res => {
         console.log(res);
@@ -56,7 +55,7 @@ function cardCreation({name, link, likes, _id, owner}, userId) {
     })
   }
   const alt = name;
-  const card = new Card('.template', name, link, alt, likes.length, owner._id, userId, handleOpenImage, handleOpenDeletePopup);
+  const card = new Card('.template', name, link, alt, likes, owner._id, userId, handleOpenImage, handleOpenDeletePopup);
   const cardBox = card.getView();
   return cardBox;
 } 

@@ -18,7 +18,7 @@ class Card {
         .cloneNode(true)
     }
 
-    handleDeleteCard = (card) => {
+    handleDeleteCard = () => {
         this._element.remove();
         this._element = null;   
     }
@@ -43,13 +43,22 @@ class Card {
         }
     }
 
+    _likeChek = () => {
+        this._likes.forEach((item) => {
+            if(item._id === this._ownerId) {
+                this._element.querySelector('.elements__like-button').classList.add('elements__like-button_active')
+            }
+        });
+    }
+
     getView() {
         this._element = this._getTemplate();
         this._element.querySelector('.elements__title').textContent = this._title;
         this._element.querySelector('.elements__image').src = this._image;
         this._element.querySelector('.elements__image').alt = this._alt;
-        this._element.querySelector('.elements__likes-count').textContent = this._likes;
+        this._element.querySelector('.elements__likes-count').textContent = this._likes.length;
         this._hideTrash();
+        this._likeChek();
         this._addEventListeners();
         return this._element;
     }
