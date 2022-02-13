@@ -54,23 +54,21 @@ function cardCreation({name, link, likes, _id, owner}, userId) {
     })
   }
   const likeCard = (card) => {
-    const cardLikeCount = card.querySelector('.elements__likes-count');
-    const likeButton = card.querySelector('.elements__like').querySelector('.elements__like-button');
-    if(likeButton.classList.contains('elements__like-button_active')) {
+    if(card.checkLikeClass() ) {
       api.deleteLike(_id)
       .then(res => {
-        cardLikeCount.textContent = res.likes.length;
+        card.handlePressLike(res.likes)
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       })
     } else {
       api.addLike(_id)
       .then(res => {
-        cardLikeCount.textContent = res.likes.length;
+        card.handlePressLike(res.likes)
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       })
     }
 }

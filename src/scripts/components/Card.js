@@ -24,9 +24,16 @@ class Card {
         this._element = null;   
     }
 
-    _handlePressLike = () => {
-        this._cardLike(this._element);
+
+    checkLikeClass = () => {
+        if(this._element.querySelector('.elements__like').querySelector('.elements__like-button').classList.contains('elements__like-button_active')) {
+            return true
+        } else return false
+    }
+
+    handlePressLike = (likes) => {
         this._element.querySelector('.elements__like-button').classList.toggle('elements__like-button_active');
+        this._element.querySelector('.elements__likes-count').textContent = likes.length;
     }
 
     _addEventListeners = () => {
@@ -36,7 +43,9 @@ class Card {
         this._element.querySelector('.elements__delete-button').addEventListener('click', () => {
             this._handleDeleteCardPopup(this);
         });
-        this._element.querySelector('.elements__like-button').addEventListener('click', this._handlePressLike);
+        this._element.querySelector('.elements__like-button').addEventListener('click', () => {
+            this._cardLike(this)
+        });
     }
 
     _hideTrash = () => {
