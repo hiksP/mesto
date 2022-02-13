@@ -46,11 +46,11 @@ function cardCreation({name, link, likes, _id, owner}, userId) {
       api.deleteCard(_id)
       .then(res => {
         card.handleDeleteCard();
+        deletePopup.close();
       })
       .catch(res => {
         console.log(res);
       })
-      deletePopup.close();
     })
   }
   const likeCard = (card) => {
@@ -92,14 +92,6 @@ const startingPage = new Section({
   }
 }, '.elements__list');
 
-api.getCards()
-.then(cards => {
-  startingPage.renderItems(cards);
-})
-.catch((err) => {
-  console.log(err);
-})
-
 const userOnThePage = new UserInfo({
   userName: profileName,
   info: profileStatus,
@@ -108,6 +100,14 @@ const userOnThePage = new UserInfo({
 api.getUserInfo()
 .then((user) => {
   userOnThePage.setUserInfo(user.name, user.about, user.avatar, user._id);
+})
+.catch((err) => {
+  console.log(err);
+})
+
+api.getCards()
+.then(cards => {
+  startingPage.renderItems(cards.reverse());
 })
 .catch((err) => {
   console.log(err);
@@ -134,10 +134,8 @@ function handleAddCard(placeInput, imageInput) {
   })
 }
 
-function handleProfileSubmit () {
-  const name = nameInput.value;
-  const status = statusInput.value;
-  api.editInfo(name, status)
+function handleProfileSubmit (data) {
+  api.editInfo(data.name, data.status)
   .then((res) => {
     userOnThePage.setUserInfo(res.name, res.about, profileAvatarPlace.src);
     editPopup.close();

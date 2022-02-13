@@ -2,8 +2,8 @@ export const openPopupProfileButton = document.querySelector('.profile__edit-but
 export const addNewCardButton = document.querySelector('.profile__add-button');
 export const formEditProfile = document.querySelector('.popup__form_edit');
 export const formAdd = document.querySelector('.popup__form_add')
-export const nameInput = document.querySelector('[name="user-name"]');
-export const statusInput = document.querySelector('[name="user-status"]');
+export const nameInput = document.querySelector('[name="name"]');
+export const statusInput = document.querySelector('[name="status"]');
 export const profileName = document.querySelector('.profile__name');
 export const profileAvatarPlace = document.querySelector('.profile__avatar');
 export const profileStatus = document.querySelector('.profile__status');
