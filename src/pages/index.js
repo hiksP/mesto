@@ -145,11 +145,10 @@ function handleProfileSubmit (data) {
   })
 }
 
-function handleChangeAvatar () {
-  const avatarLink = avatarInput.value;
-  api.changeAvatar(avatarLink)
+function handleChangeAvatar (data) {
+  api.changeAvatar(data.avatar)
   .then((res) => {
-    userOnThePage.setUserInfo(res.name, res.about, avatarLink);
+    userOnThePage.setUserInfo(res.name, res.about, data.avatar);
     changeAvatarPopup.close();
   })
   .catch((err) => {
